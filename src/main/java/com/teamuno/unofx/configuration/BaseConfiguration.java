@@ -6,7 +6,7 @@ public class BaseConfiguration
 
     public enum CARD_TYPES { NUMBER, SKIP, REVERSE, DRAW_TWO, WILD, WILD_DRAW_FOUR };
 
-    public enum GAME_DIRECTION { FORWARD, BACKWARDS };
+    public static enum GAME_DIRECTION { FORWARD, BACKWARDS };
 
     public static final int NUMBER_OF_REGULAR_CARDS_PER_SET = 2;
 
@@ -18,5 +18,5 @@ public class BaseConfiguration
 
     public static final int NUMBER_OF_WILD_DRAW_FOUR_CARDS_PER_SET = 4;
 
-    public static int NUMBER_OF_CARDS_PER_PLAYER = 7;
+    public static final int NUMBER_OF_CARDS_PER_PLAYER = 7;
 }

@@ -22,13 +22,6 @@ public class Card
         this.cardNumber = cardNumber;
     }
 
-    public Card( BaseConfiguration.CARD_COLORS color, BaseConfiguration.CARD_TYPES type, int cardNumber )
-    {
-        this.color = color;
-        this.type = type;
-        this.cardNumber = cardNumber;
-    }
-
     public BaseConfiguration.CARD_COLORS getColor()
     {
         return this.color;
@@ -39,7 +32,7 @@ public class Card
         return this.type;
     }
 
-    public int getCardNumber()
+    public int getNumber()
     {
         return this.cardNumber;
     }

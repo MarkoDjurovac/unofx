@@ -1,5 +1,6 @@
 package com.teamuno.unofx;
 
+import com.teamuno.unofx.controller.SceneController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,10 +15,12 @@ public class Main extends Application
     public void start( Stage stage ) throws IOException
     {
         FXMLLoader fxmlLoader = new FXMLLoader( Main.class.getResource( "/view/main-menu.fxml" ) );
-        Scene scene = new Scene( fxmlLoader.load(), 320, 240 );
+        Scene scene = new Scene( fxmlLoader.load(), 800, 600 );
         stage.getIcons().add( new Image( getClass().getResourceAsStream("/img/icon_512.png" ) ) );
+        scene.getStylesheets().add("/style/style.css");
         stage.setTitle( "UnoFX" );
         stage.setScene( scene );
+        stage.setResizable( false );
         stage.show();
     }
 

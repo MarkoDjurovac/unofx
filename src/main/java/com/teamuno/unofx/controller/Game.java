@@ -1,6 +1,9 @@
-package com.teamuno.unofx.model;
+package com.teamuno.unofx.controller;
 
 import com.teamuno.unofx.configuration.BaseConfiguration;
+import com.teamuno.unofx.model.Card;
+import com.teamuno.unofx.model.Deck;
+import com.teamuno.unofx.model.Player;
 
 import java.util.List;
 
@@ -10,11 +13,16 @@ public class Game
     List<Player> players;
     Player currentPlayer;
 
-    public Game( List<Player> players )
+    public Game(List<Player> players )
     {
         this.players = players;
         this.deck = new Deck();
         this.currentPlayer = players.get( 0 );
+    }
+
+    public void startGame()
+    {
+
     }
 
     boolean isValidMove( Card card )

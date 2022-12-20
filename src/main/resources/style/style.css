@@ -1,0 +1,14 @@
+#playerHand
+{
+    -fx-background-color: grey;
+}
+
+#botHand
+{
+    -fx-background-color: grey;
+}
+
+#gameField
+{
+    -fx-background-color: lightgrey;
+}
