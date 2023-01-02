@@ -1,6 +1,5 @@
 package com.teamuno.unofx;
 
-import com.teamuno.unofx.controller.SceneController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

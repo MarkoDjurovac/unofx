@@ -29,4 +29,6 @@ public abstract class Player
     {
         return this.hand;
     }
+
+    public abstract void playCard( Game game, Card card);
 }

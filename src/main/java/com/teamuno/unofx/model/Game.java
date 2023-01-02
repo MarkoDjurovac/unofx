@@ -46,4 +46,14 @@ public class Game
 
         return false;
     }
+
+    public boolean isUno( Player currentPlayer )
+    {
+        if( currentPlayer.getHand().size() == 1 )
+        {
+            return true;
+        }
+
+        return false;
+    }
 }

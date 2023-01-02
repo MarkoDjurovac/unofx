@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" prefHeight="600" prefWidth="800" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamuno.unofx.controller.MenuController">
+<VBox alignment="CENTER" prefHeight="600" prefWidth="800" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamuno.unofx.controller.MainMenuController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -17,7 +17,39 @@
     </ImageView>
     <Button onAction="#startGame" text="Start Game" />
     <Button onAction="#toggleSettings" text="Settings" />
+    <Button onAction="#quitProgram" text="Quit Game" />
     <VBox alignment="CENTER" fx:id="settingsMenu" visible="false" >
-        <Text>Test</Text>
+        <Label>Player name:</Label>
+        <TextField fx:id="nameField" />
+        <Label>Regular cards per set:</Label>
+        <Spinner>
+            <valueFactory>
+                <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="9" initialValue="2" />
+            </valueFactory>
+        </Spinner>
+        <Label>Wild cards per set:</Label>
+        <Spinner>
+            <valueFactory>
+                <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="9" initialValue="4" />
+            </valueFactory>
+        </Spinner>
+        <Label>Special cards per set:</Label>
+        <Spinner>
+            <valueFactory>
+                <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="9" initialValue="2" />
+            </valueFactory>
+        </Spinner>
+        <Label>Draw fours per set:</Label>
+        <Spinner>
+            <valueFactory>
+                <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="9" initialValue="4" />
+            </valueFactory>
+        </Spinner>
+        <Label>Cards per player:</Label>
+        <Spinner>
+            <valueFactory>
+                <SpinnerValueFactory.IntegerSpinnerValueFactory min="1" max="15" initialValue="7" />
+            </valueFactory>
+        </Spinner>
     </VBox>
 </VBox>

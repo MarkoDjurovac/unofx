@@ -1,5 +1,7 @@
 package com.teamuno.unofx.model;
 
+import com.teamuno.unofx.configuration.BaseConfiguration;
+
 public class Human extends Player
 {
     public Human()
@@ -12,8 +14,11 @@ public class Human extends Player
         super( name );
     }
 
-    public void makeMove( )
+    public void playCard( Game game , Card card )
     {
-
+        if( game.isValidMove( card ) )
+        {
+            this.getHand().remove( card );
+        }
     }
 }

@@ -7,7 +7,7 @@ public class Bot extends Player
         super( "Robot");
     }
 
-    public void makeMove( )
+    public void playCard( Game game , Card card )
     {
 
     }

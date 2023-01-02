@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.text.Text?>
-<VBox alignment="CENTER" prefHeight="600" prefWidth="800" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamuno.unofx.controller.MenuController">
+<VBox alignment="CENTER" prefHeight="600" prefWidth="800" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamuno.unofx.controller.MainMenuController">
     <HBox fx:id="botHand" prefHeight="150" prefWidth="800">
         <Text>BotHand</Text>
     </HBox>
@@ -14,5 +14,5 @@
     <HBox prefHeight="150" fx:id="playerHand" prefWidth="800">
         <Text>PlayerHand</Text>
     </HBox>
-    <Button onAction="#quitGame" text="Quit game" />
+    <Button onAction="#quitGame" text="Back To Main Menu" />
 </VBox>

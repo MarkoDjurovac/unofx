@@ -8,4 +8,6 @@ module com.teamuno.unofx {
     exports com.teamuno.unofx;
     exports com.teamuno.unofx.controller;
     opens com.teamuno.unofx.controller to javafx.fxml;
+    exports com.teamuno.unofx.utilities;
+    opens com.teamuno.unofx.utilities to javafx.fxml;
 }

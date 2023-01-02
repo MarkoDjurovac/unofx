@@ -1,5 +1,8 @@
 package com.teamuno.unofx.configuration;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class CustomConfiguration
 {
     public static int NUMBER_OF_REGULAR_CARDS_PER_SET;
@@ -12,5 +15,5 @@ public class CustomConfiguration
 
     public static int NUMBER_OF_WILD_DRAW_FOUR_CARDS_PER_SET;
 
-    public static int NUMBER_OF_CARDS_PER_PLAYER = 7;
+    public static int NUMBER_OF_CARDS_PER_PLAYER;
 }
