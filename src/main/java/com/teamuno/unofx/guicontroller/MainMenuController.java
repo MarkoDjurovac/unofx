@@ -1,18 +1,11 @@
-package com.teamuno.unofx.controller;
+package com.teamuno.unofx.guicontroller;
 
-import com.teamuno.unofx.configuration.BaseConfiguration;
-import com.teamuno.unofx.configuration.CustomConfiguration;
-import com.teamuno.unofx.model.Bot;
-import com.teamuno.unofx.model.Game;
-import com.teamuno.unofx.model.Player;
 import com.teamuno.unofx.utilities.SceneUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainMenuController
 {
@@ -20,7 +13,7 @@ public class MainMenuController
     private VBox settingsMenu;
 
     @FXML
-    protected void toggleSettings( ActionEvent event )
+    protected void toggleSettings()
     {
         if( !settingsMenu.isVisible() )
         {
@@ -39,13 +32,7 @@ public class MainMenuController
     }
 
     @FXML
-    protected void quitGame( ActionEvent event ) throws IOException
-    {
-        SceneUtils.changeScene( event, getClass().getResource( "/view/main-menu.fxml" ) );
-    }
-
-    @FXML
-    protected void quitProgram( ActionEvent event ) throws IOException
+    protected void quitProgram()
     {
         System.exit( 0 );
     }

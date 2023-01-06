@@ -18,6 +18,7 @@ public abstract class Player
     public Player( String name )
     {
         this.name = name;
+        this.hand = new ArrayList<>();
     }
 
     public void drawCard( Deck deck )
@@ -28,6 +29,19 @@ public abstract class Player
     public List<Card> getHand()
     {
         return this.hand;
+    }
+
+    public String getName()
+    {
+        return this.name;
+    }
+
+    public void setName( String value )
+    {
+        if( value != this.name )
+        {
+            this.name = value;
+        }
     }
 
     public abstract void playCard( Game game, Card card);

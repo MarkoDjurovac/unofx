@@ -1,9 +1,6 @@
 package com.teamuno.unofx.configuration;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class CustomConfiguration
+public class CustomSettings
 {
     public static int NUMBER_OF_REGULAR_CARDS_PER_SET;
 

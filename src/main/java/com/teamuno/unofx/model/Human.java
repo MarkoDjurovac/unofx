@@ -1,7 +1,5 @@
 package com.teamuno.unofx.model;
 
-import com.teamuno.unofx.configuration.BaseConfiguration;
-
 public class Human extends Player
 {
     public Human()

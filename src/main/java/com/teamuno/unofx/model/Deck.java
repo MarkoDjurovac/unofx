@@ -1,6 +1,6 @@
 package com.teamuno.unofx.model;
 
-import com.teamuno.unofx.configuration.BaseConfiguration;
+import com.teamuno.unofx.factory.DeckFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,57 +17,8 @@ public class Deck
         this.deck = new ArrayList<>();
         this.discarded = new ArrayList<>();
         this.random = new Random();
-        this.generateCards();
-    }
-
-    public void generateCards()
-    {
-        for( int i = 0; i < BaseConfiguration.NUMBER_OF_REGULAR_CARDS_PER_SET; i++ )
-        {
-            for( int j = 1; j <= 9; j++ )
-            {
-                this.deck.add( new Card( BaseConfiguration.CARD_COLORS.RED, j ) );
-                this.deck.add( new Card( BaseConfiguration.CARD_COLORS.YELLOW, j ) );
-                this.deck.add( new Card( BaseConfiguration.CARD_COLORS.GREEN, j ) );
-                this.deck.add( new Card( BaseConfiguration.CARD_COLORS.BLUE, j ) );
-            }
-        }
-
-        for( int i = 0; i < BaseConfiguration.NUMBER_OF_ZERO_CARDS_PER_SET; i++ )
-        {
-            this.deck.add( new Card( BaseConfiguration.CARD_COLORS.RED, 0 ) );
-            this.deck.add( new Card( BaseConfiguration.CARD_COLORS.YELLOW, 0 ) );
-            this.deck.add( new Card( BaseConfiguration.CARD_COLORS.GREEN, 0 ) );
-            this.deck.add( new Card( BaseConfiguration.CARD_COLORS.BLUE, 0 ) );
-        }
-
-        for( int i = 0; i < BaseConfiguration.NUMBER_OF_SPECIAL_CARDS_PER_SET; i++ )
-        {
-            this.deck.add( new Card( BaseConfiguration.CARD_COLORS.RED, BaseConfiguration.CARD_TYPES.SKIP ) );
-            this.deck.add( new Card( BaseConfiguration.CARD_COLORS.YELLOW, BaseConfiguration.CARD_TYPES.SKIP ) );
-            this.deck.add( new Card( BaseConfiguration.CARD_COLORS.GREEN, BaseConfiguration.CARD_TYPES.SKIP ) );
-            this.deck.add( new Card( BaseConfiguration.CARD_COLORS.BLUE, BaseConfiguration.CARD_TYPES.SKIP ) );
-
-            this.deck.add( new Card( BaseConfiguration.CARD_COLORS.RED, BaseConfiguration.CARD_TYPES.REVERSE ) );
-            this.deck.add( new Card( BaseConfiguration.CARD_COLORS.YELLOW, BaseConfiguration.CARD_TYPES.REVERSE ) );
-            this.deck.add( new Card( BaseConfiguration.CARD_COLORS.GREEN, BaseConfiguration.CARD_TYPES.REVERSE ) );
-            this.deck.add( new Card( BaseConfiguration.CARD_COLORS.BLUE, BaseConfiguration.CARD_TYPES.REVERSE ) );
-
-            this.deck.add( new Card( BaseConfiguration.CARD_COLORS.RED, BaseConfiguration.CARD_TYPES.DRAW_TWO ) );
-            this.deck.add( new Card( BaseConfiguration.CARD_COLORS.YELLOW, BaseConfiguration.CARD_TYPES.DRAW_TWO ) );
-            this.deck.add( new Card( BaseConfiguration.CARD_COLORS.GREEN, BaseConfiguration.CARD_TYPES.DRAW_TWO ) );
-            this.deck.add( new Card( BaseConfiguration.CARD_COLORS.BLUE, BaseConfiguration.CARD_TYPES.DRAW_TWO ) );
-        }
-
-        for( int i = 0; i < BaseConfiguration.NUMBER_OF_WILD_CARDS_PER_SET; i++ )
-        {
-            this.deck.add( new Card( BaseConfiguration.CARD_COLORS.NONE, BaseConfiguration.CARD_TYPES.WILD) );
-        }
-
-        for( int i = 0; i < BaseConfiguration.NUMBER_OF_WILD_DRAW_FOUR_CARDS_PER_SET; i++ )
-        {
-            this.deck.add( new Card( BaseConfiguration.CARD_COLORS.NONE, BaseConfiguration.CARD_TYPES.WILD_DRAW_FOUR ) );
-        }
+        DeckFactory.generateCards( this.deck );
+        this.shuffle();
     }
 
     public void shuffle()

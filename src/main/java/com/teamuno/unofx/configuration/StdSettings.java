@@ -1,12 +1,12 @@
 package com.teamuno.unofx.configuration;
 
-public class BaseConfiguration
+public class StdSettings
 {
     public enum CARD_COLORS { RED, YELLOW, GREEN, BLUE, NONE };
 
     public enum CARD_TYPES { NUMBER, SKIP, REVERSE, DRAW_TWO, WILD, WILD_DRAW_FOUR };
 
-    public static enum GAME_DIRECTION { FORWARD, BACKWARDS };
+    public enum GAME_DIRECTION { FORWARD, BACKWARDS };
 
     public static final int NUMBER_OF_REGULAR_CARDS_PER_SET = 2;
 

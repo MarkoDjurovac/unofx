@@ -18,7 +18,7 @@ public class SceneUtils
         Stage stage = ( Stage )( ( Node ) event.getSource() ).getScene().getWindow();
         Scene scene = new Scene( root );
         stage.setScene( scene );
-        scene.getStylesheets().add("/style/style.css");
+        scene.getStylesheets().add( "/style/style.css" );
         stage.show();
     }
 }
