@@ -9,7 +9,7 @@ public class Bot extends Player
         super( "Robot");
     }
 
-    public void playCard( Game game , Card card )
+    public void playCard( Game game, Card card )
     {
         while( !game.isValidMove( card ) )
         {

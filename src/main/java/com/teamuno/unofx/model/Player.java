@@ -21,9 +21,12 @@ public abstract class Player
         this.hand = new ArrayList<>();
     }
 
-    public void drawCard( Deck deck )
+    public Card drawCard( Deck deck )
     {
-        this.hand.add( deck.drawCard() );
+        Card card = deck.drawCard();
+        this.hand.add( card );
+
+        return card;
     }
 
     public List<Card> getHand()
@@ -44,5 +47,5 @@ public abstract class Player
         }
     }
 
-    public abstract void playCard( Game game, Card card);
+    public abstract void playCard( Game game, Card card );
 }

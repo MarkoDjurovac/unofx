@@ -48,7 +48,7 @@ public class DeckFactory
 
         for(int i = 0; i < StdSettings.NUMBER_OF_WILD_CARDS_PER_SET; i++ )
         {
-            deck.add( new Card( StdSettings.CARD_COLORS.NONE, StdSettings.CARD_TYPES.WILD) );
+            deck.add( new Card( StdSettings.CARD_COLORS.NONE, StdSettings.CARD_TYPES.WILD ) );
         }
 
         for(int i = 0; i < StdSettings.NUMBER_OF_WILD_DRAW_FOUR_CARDS_PER_SET; i++ )

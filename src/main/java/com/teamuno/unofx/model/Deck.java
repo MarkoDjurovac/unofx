@@ -46,7 +46,7 @@ public class Deck
 
     public void discardCard( Card card )
     {
-        this.discarded.add( card );
+        this.discarded.add( 0, card );
     }
 
     public List<Card> getDeck()

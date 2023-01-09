@@ -4,6 +4,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.text.Text?>
 <VBox alignment="CENTER" prefHeight="600" prefWidth="800" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamuno.unofx.guicontroller.GameViewController">
     <HBox fx:id="botHand" prefHeight="150" prefWidth="800">
     </HBox>
@@ -16,9 +17,18 @@
         <ImageView fx:id="discarded_pile">
 
         </ImageView>
-      <Accordion />
+        <StackPane>
+
+        </StackPane>
+        <GridPane>
+            <Text fx:id="turnText" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Button text="Next turn" onAction="#nextTurn"  GridPane.rowIndex="0" GridPane.columnIndex="1" />
+            <Button fx:id="unoButton" text="UNO!" onAction="#announceUno" GridPane.rowIndex="0" GridPane.columnIndex="2"  disable="true"/>
+        </GridPane>
     </HBox>
-    <HBox fx:id="playerHand" prefHeight="150" prefWidth="800">
-    </HBox>
+    <ScrollPane>
+        <HBox fx:id="playerHand" prefHeight="150" prefWidth="800">
+        </HBox>
+    </ScrollPane>
     <Button onAction="#quitGame" text="Back To Main Menu" />
 </VBox>
