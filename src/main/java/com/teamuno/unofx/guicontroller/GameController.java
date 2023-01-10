@@ -46,8 +46,6 @@ public class GameController
         this.dealCards( deck, players );
         this.deck.getDiscarded().add( this.deck.drawCard() );
 
-        discarded_pile.setFitHeight( 79.0 );
-        discarded_pile.setFitWidth( 83.5 );
         discarded_pile.setImage( new Image( this.deck.getTopCard().getUrlImage() ) );
     }
 
@@ -126,6 +124,7 @@ public class GameController
     public void skip()
     {
         this.nextTurn();
+        this.nextTurn();
     }
 
     public void reverse()
@@ -157,13 +156,11 @@ public class GameController
         }
     }
 
-    public void playCardFx( Player player, ImageView imageview )
+    public void playCardFx( ImageView imageview )
     {
-        if( player instanceof Human )
-        {
-            playerHand.getChildren().remove( imageview );
-            discarded_pile.setImage( imageview.getImage() );
-        }
+        playerHand.getChildren().remove( imageview );
+        discarded_pile.setImage( imageview.getImage() );
+        this.nextTurn();
     }
 
     public void botPlayCardFx( Card card )
@@ -176,8 +173,8 @@ public class GameController
     public void drawImageToHand( Card card )
     {
         ImageView imgview = new ImageView( card.getUrlImage() );
-        imgview.setFitHeight( 79.0 );
-        imgview.setFitWidth( 83.5 );
+        imgview.setFitHeight( 113.0 );
+        imgview.setFitWidth( 79.0 );
 
         playerHand.getChildren().add( imgview );
         this.makeCardClickable( card, imgview );
@@ -186,8 +183,8 @@ public class GameController
     public void drawImageToHand( String url )
     {
         ImageView imgview = new ImageView( url );
-        imgview.setFitHeight( 79.0 );
-        imgview.setFitWidth( 83.5 );
+        imgview.setFitHeight( 113.0 );
+        imgview.setFitWidth( 79.0 );
 
         botHand.getChildren().add( imgview );
     }
@@ -216,15 +213,6 @@ public class GameController
             alert.setHeaderText( "Winner!" );
             alert.setContentText( this.currentPlayer.getName() + " has won!" );
             alert.showAndWait();
-
-            try
-            {
-                SceneManager.changeScene( new ActionEvent(), getClass().getResource( "/view/main-menu.fxml" ) );
-            }
-            catch( IOException e )
-            {
-                e.printStackTrace();
-            }
         }
     }
 
@@ -237,10 +225,9 @@ public class GameController
                 if( UnoHelper.isValidMove( deck.getTopCard(), card ) )
                 {
                     currentPlayer.playCard( GameController.this, card );
-                    playCardFx( currentPlayer, imageview );
+                    playCardFx( imageview );
                     checkForUno();
                     checkForWin();
-                    nextTurn();
                 }
                 else
                 {

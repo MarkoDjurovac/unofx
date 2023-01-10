@@ -8,34 +8,22 @@ public class UnoHelper
 {
     public static boolean isValidMove( Card topCard, Card card )
     {
-        if( card == null )
+        if( topCard.getColor() == card.getColor() || topCard.getType() == card.getType() )
         {
-            return false;
+            return true;
+        }
+        else if( card.getType() == StdSettings.CARD_TYPES.WILD_DRAW_FOUR )
+        {
+            return true;
+        }
+        else if( card.getType() == StdSettings.CARD_TYPES.WILD )
+        {
+            return true;
         }
         else
         {
-            if( topCard.getType() == StdSettings.CARD_TYPES.WILD || topCard.getType() == StdSettings.CARD_TYPES.WILD_DRAW_FOUR )
-            {
-                return true;
-            }
-
-            if( card.getType() == StdSettings.CARD_TYPES.WILD || card.getType() == StdSettings.CARD_TYPES.WILD_DRAW_FOUR )
-            {
-                return true;
-            }
-
-            if( card.getColor() == topCard.getColor()  )
-            {
-                return true;
-            }
-
-            if( card.getNumber() == topCard.getNumber() )
-            {
-                return true;
-            }
+            return false;
         }
-
-        return false;
     }
 
     public static void checkForSpecialCards(GameController gc, Card card )

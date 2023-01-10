@@ -9,12 +9,12 @@
         <HBox fx:id="botHand" prefHeight="150" prefWidth="800" />
     </ScrollPane>
     <HBox fx:id="gameField" prefHeight="200" prefWidth="800">
-        <ImageView fitHeight="79.0" fitWidth="83.5" onMouseClicked="#drawCard" pickOnBounds="true" preserveRatio="true">
+        <ImageView fitHeight="113.0" fitWidth="79.0" onMouseClicked="#drawCard" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../img/cards/back.gif" />
             </image>
         </ImageView>
-        <ImageView fx:id="discarded_pile" />
+        <ImageView fx:id="discarded_pile" fitHeight="113.0" fitWidth="79.0" />
     </HBox>
     <ScrollPane>
         <HBox fx:id="playerHand" prefHeight="150" prefWidth="800" />
