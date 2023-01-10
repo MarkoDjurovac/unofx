@@ -2,8 +2,8 @@
 Recreation of UNO as a JavaFX project for academic purposes.
 
 # Notes
-Due to tight schedules and the project's Beta Milestone 1 status, it is currently
-✨  Buggy as  frick  ✨
+Due to tight schedules and the project's Beta Milestone 1 status, it is currently\
+✨  Buggy as  frick  ✨\
 We are working on sorting out the bugs and finishing it up soonely doodely(tm).
 
 # ToDos
