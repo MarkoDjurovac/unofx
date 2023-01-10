@@ -25,6 +25,14 @@ public class Card
         this.urlImage = generateUrl( cardNumber, color, type );
     }
 
+    public Card( StdSettings.CARD_COLORS color, StdSettings.CARD_TYPES type, int cardNumber )
+    {
+        this.color = color;
+        this.type = type;
+        this.cardNumber = cardNumber;
+        this.urlImage = generateUrl( cardNumber, color, type );
+    }
+
     public String generateUrl( int cardNumber, StdSettings.CARD_COLORS color, StdSettings.CARD_TYPES type )
     {
         String url = "/img/cards/";

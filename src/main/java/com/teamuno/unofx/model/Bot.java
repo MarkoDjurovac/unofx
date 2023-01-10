@@ -1,5 +1,8 @@
 package com.teamuno.unofx.model;
 
+import com.teamuno.unofx.guicontroller.GameController;
+import com.teamuno.unofx.utilities.UnoHelper;
+
 import java.util.Random;
 
 public class Bot extends Player
@@ -9,13 +12,22 @@ public class Bot extends Player
         super( "Robot");
     }
 
-    public void playCard( Game game, Card card )
+    public void playCard( GameController gc, Card card )
     {
-        while( !game.isValidMove( card ) )
-        {
-            card = this.getHand().get( (int)( new Random().nextInt() * this.getHand().size() ) );
-        }
+        Card randomCard = this.getHand().get( new Random().nextInt(0, this.getHand().size() ) );
 
-        this.getHand().remove( card );
+        if( UnoHelper.isValidMove( gc.getDeck().getTopCard(), randomCard ) )
+        {
+            this.getHand().remove( randomCard );
+            gc.getDeck().discardCard( randomCard );
+            gc.botPlayCardFx( randomCard );
+            UnoHelper.checkForSpecialCards( gc, randomCard );
+            gc.checkForUno();
+            gc.checkForWin();
+        }
+        else
+        {
+            gc.drawCardFx( this );
+        }
     }
 }

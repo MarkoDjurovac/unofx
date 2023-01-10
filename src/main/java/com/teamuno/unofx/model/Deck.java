@@ -58,4 +58,9 @@ public class Deck
     {
         return this.discarded.get( 0 );
     }
+
+    public List<Card> getDiscarded()
+    {
+        return this.discarded;
+    }
 }

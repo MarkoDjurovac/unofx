@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" prefHeight="600" prefWidth="800" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamuno.unofx.guicontroller.GameController">
+    <ScrollPane>
+        <HBox fx:id="botHand" prefHeight="150" prefWidth="800" />
+    </ScrollPane>
+    <HBox fx:id="gameField" prefHeight="200" prefWidth="800">
+        <ImageView fitHeight="79.0" fitWidth="83.5" onMouseClicked="#drawCard" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../img/cards/back.gif" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="discarded_pile" />
+    </HBox>
+    <ScrollPane>
+        <HBox fx:id="playerHand" prefHeight="150" prefWidth="800" />
+    </ScrollPane>
+    <Button onAction="#quitGame" text="Back To Main Menu" />
+</VBox>

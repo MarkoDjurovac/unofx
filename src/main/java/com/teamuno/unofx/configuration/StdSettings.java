@@ -6,8 +6,6 @@ public class StdSettings
 
     public enum CARD_TYPES { NUMBER, SKIP, REVERSE, DRAW_TWO, WILD, WILD_DRAW_FOUR };
 
-    public enum GAME_DIRECTION { FORWARD, BACKWARDS };
-
     public static final int NUMBER_OF_REGULAR_CARDS_PER_SET = 2;
 
     public static final int NUMBER_OF_WILD_CARDS_PER_SET = 4;

@@ -20,11 +20,11 @@
     <Button onAction="#quitProgram" text="Quit Game" />
     <VBox alignment="CENTER" fx:id="settingsMenu" visible="false" >
         <Label>Player name:</Label>
-        <TextField fx:id="nameField" />
+        <TextField fx:id="nameField"/>
         <Label>Regular cards per set:</Label>
         <Spinner>
             <valueFactory>
-                <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="9" initialValue="2" />
+                <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="9" initialValue="2"/>
             </valueFactory>
         </Spinner>
         <Label>Wild cards per set:</Label>

@@ -30,20 +30,20 @@ public class DeckFactory
 
         for(int i = 0; i < StdSettings.NUMBER_OF_SPECIAL_CARDS_PER_SET; i++ )
         {
-            deck.add( new Card( StdSettings.CARD_COLORS.RED, StdSettings.CARD_TYPES.SKIP ) );
-            deck.add( new Card( StdSettings.CARD_COLORS.YELLOW, StdSettings.CARD_TYPES.SKIP ) );
-            deck.add( new Card( StdSettings.CARD_COLORS.GREEN, StdSettings.CARD_TYPES.SKIP ) );
-            deck.add( new Card( StdSettings.CARD_COLORS.BLUE, StdSettings.CARD_TYPES.SKIP ) );
+            deck.add( new Card( StdSettings.CARD_COLORS.RED, StdSettings.CARD_TYPES.SKIP, 10 ) );
+            deck.add( new Card( StdSettings.CARD_COLORS.YELLOW, StdSettings.CARD_TYPES.SKIP, 10 ) );
+            deck.add( new Card( StdSettings.CARD_COLORS.GREEN, StdSettings.CARD_TYPES.SKIP, 10 ) );
+            deck.add( new Card( StdSettings.CARD_COLORS.BLUE, StdSettings.CARD_TYPES.SKIP, 10 ) );
 
-            deck.add( new Card( StdSettings.CARD_COLORS.RED, StdSettings.CARD_TYPES.REVERSE ) );
-            deck.add( new Card( StdSettings.CARD_COLORS.YELLOW, StdSettings.CARD_TYPES.REVERSE ) );
-            deck.add( new Card( StdSettings.CARD_COLORS.GREEN, StdSettings.CARD_TYPES.REVERSE ) );
-            deck.add( new Card( StdSettings.CARD_COLORS.BLUE, StdSettings.CARD_TYPES.REVERSE ) );
+            deck.add( new Card( StdSettings.CARD_COLORS.RED, StdSettings.CARD_TYPES.REVERSE, 11 ) );
+            deck.add( new Card( StdSettings.CARD_COLORS.YELLOW, StdSettings.CARD_TYPES.REVERSE, 11) );
+            deck.add( new Card( StdSettings.CARD_COLORS.GREEN, StdSettings.CARD_TYPES.REVERSE, 11 ) );
+            deck.add( new Card( StdSettings.CARD_COLORS.BLUE, StdSettings.CARD_TYPES.REVERSE, 11 ) );
 
-            deck.add( new Card( StdSettings.CARD_COLORS.RED, StdSettings.CARD_TYPES.DRAW_TWO ) );
-            deck.add( new Card( StdSettings.CARD_COLORS.YELLOW, StdSettings.CARD_TYPES.DRAW_TWO ) );
-            deck.add( new Card( StdSettings.CARD_COLORS.GREEN, StdSettings.CARD_TYPES.DRAW_TWO ) );
-            deck.add( new Card( StdSettings.CARD_COLORS.BLUE, StdSettings.CARD_TYPES.DRAW_TWO ) );
+            deck.add( new Card( StdSettings.CARD_COLORS.RED, StdSettings.CARD_TYPES.DRAW_TWO, 12) );
+            deck.add( new Card( StdSettings.CARD_COLORS.YELLOW, StdSettings.CARD_TYPES.DRAW_TWO, 12 ) );
+            deck.add( new Card( StdSettings.CARD_COLORS.GREEN, StdSettings.CARD_TYPES.DRAW_TWO, 12 ) );
+            deck.add( new Card( StdSettings.CARD_COLORS.BLUE, StdSettings.CARD_TYPES.DRAW_TWO, 12 ) );
         }
 
         for(int i = 0; i < StdSettings.NUMBER_OF_WILD_CARDS_PER_SET; i++ )

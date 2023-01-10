@@ -10,7 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class SceneUtils
+public class SceneManager
 {
     public static void changeScene( ActionEvent event, URL fxml ) throws IOException
     {

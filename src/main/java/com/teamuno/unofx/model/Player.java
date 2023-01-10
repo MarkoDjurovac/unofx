@@ -1,5 +1,7 @@
 package com.teamuno.unofx.model;
 
+import com.teamuno.unofx.guicontroller.GameController;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,5 +49,5 @@ public abstract class Player
         }
     }
 
-    public abstract void playCard( Game game, Card card );
+    public abstract void playCard(GameController gc, Card card );
 }
