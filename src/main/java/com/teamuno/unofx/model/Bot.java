@@ -1,21 +1,35 @@
 package com.teamuno.unofx.model;
 
-import java.util.Random;
+import com.teamuno.unofx.utilities.GameLogic;
 
 public class Bot extends Player
 {
     public Bot()
     {
-        super( "Robot");
+        super( "Robot" );
     }
 
-    public void playCard( Game game, Card card )
+    public Card playCard( GameState game )
     {
-        while( !game.isValidMove( card ) )
+        for( Card card : this.getHand() )
         {
-            card = this.getHand().get( (int)( new Random().nextInt() * this.getHand().size() ) );
+            if( GameLogic.isValidMove( game.getDeck().getTopCard(), card ) )
+            {
+                if( GameLogic.checkForSpecialCard( game, card ) )
+                {
+                    game.getDeck().discard( card );
+                    this.getHand().remove( card );
+                    return card;
+                }
+
+                game.getDeck().discard( card );
+                this.getHand().remove( card );
+                return card;
+            }
         }
 
-        this.getHand().remove( card );
+        this.draw( game.getDeck() );
+
+        return null;
     }
 }

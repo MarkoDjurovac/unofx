@@ -21,17 +21,12 @@ public abstract class Player
         this.hand = new ArrayList<>();
     }
 
-    public Card drawCard( Deck deck )
+    public Card draw( Deck deck )
     {
-        Card card = deck.drawCard();
+        Card card = deck.draw();
         this.hand.add( card );
 
         return card;
-    }
-
-    public List<Card> getHand()
-    {
-        return this.hand;
     }
 
     public String getName()
@@ -41,11 +36,16 @@ public abstract class Player
 
     public void setName( String value )
     {
-        if( value != this.name )
-        {
-            this.name = value;
-        }
+        this.name = value;
     }
 
-    public abstract void playCard( Game game, Card card );
+    public List<Card> getHand()
+    {
+        return this.hand;
+    }
+
+    public boolean isBot()
+    {
+        return this instanceof Bot;
+    }
 }

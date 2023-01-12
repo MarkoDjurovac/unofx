@@ -9,21 +9,24 @@ import java.util.Random;
 public class Deck
 {
     private List<Card> deck;
-    private List<Card> discarded;
+
+    private List<Card> discardPile;
+
     private Random random;
 
     public Deck()
     {
         this.deck = new ArrayList<>();
-        this.discarded = new ArrayList<>();
+        this.discardPile = new ArrayList<>();
         this.random = new Random();
-        DeckFactory.generateCards( this.deck );
+        DeckFactory.generateDefaultDeck( this.deck );
+
         this.shuffle();
     }
 
     public void shuffle()
     {
-        for(int i = 0; i < this.deck.size(); i++ )
+        for( int i = 0; i < this.deck.size(); i++ )
         {
             int a = this.random.nextInt( this.deck.size() );
             int b = this.random.nextInt( this.deck.size() );
@@ -34,28 +37,23 @@ public class Deck
         }
     }
 
-    public boolean isEmpty()
-    {
-        return this.deck.isEmpty();
-    }
-
-    public Card drawCard()
+    public Card draw()
     {
         return this.deck.remove( 0 );
     }
 
-    public void discardCard( Card card )
+    public void discard( Card card )
     {
-        this.discarded.add( 0, card );
-    }
-
-    public List<Card> getDeck()
-    {
-        return this.deck;
+        this.discardPile.add( 0, card );
     }
 
     public Card getTopCard()
     {
-        return this.discarded.get( 0 );
+        return this.discardPile.get( 0 );
+    }
+
+    public boolean isEmpty()
+    {
+        return this.deck.isEmpty();
     }
 }

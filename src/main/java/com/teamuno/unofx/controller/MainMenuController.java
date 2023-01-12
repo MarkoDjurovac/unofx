@@ -1,6 +1,6 @@
-package com.teamuno.unofx.guicontroller;
+package com.teamuno.unofx.controller;
 
-import com.teamuno.unofx.utilities.SceneUtils;
+import com.teamuno.unofx.utilities.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
@@ -28,7 +28,7 @@ public class MainMenuController
     @FXML
     protected void startGame( ActionEvent event ) throws IOException
     {
-        SceneUtils.changeScene( event, getClass().getResource("/view/game_view.fxml") );
+        SceneManager.changeScene( event, getClass().getResource("/view/game.fxml" ) );
     }
 
     @FXML

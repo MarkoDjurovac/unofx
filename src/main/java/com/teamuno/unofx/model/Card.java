@@ -1,115 +1,86 @@
 package com.teamuno.unofx.model;
 
-import com.teamuno.unofx.configuration.StdSettings;
+import com.teamuno.unofx.configuration.CardConfiguration;
 
 public class Card
 {
-    private StdSettings.CARD_COLORS color;
-    private StdSettings.CARD_TYPES type;
-    private int cardNumber;
-    private String urlImage;
+    private CardConfiguration.COLORS color;
 
-    public Card( StdSettings.CARD_COLORS color, StdSettings.CARD_TYPES type )
+    private CardConfiguration.TYPES type;
+
+    private int number;
+
+    private String imageUrl;
+
+    public Card( CardConfiguration.COLORS color, int number )
+    {
+        this.color = color;
+        this.type = CardConfiguration.TYPES.NUMBER;
+        this.number = number;
+        this.imageUrl = generateUrl( color, type, number );
+    }
+
+    public Card( CardConfiguration.COLORS color, CardConfiguration.TYPES type, int number )
     {
         this.color = color;
         this.type = type;
-        this.cardNumber = -1;
-        this.urlImage = generateUrl( cardNumber, color, type );
+        this.number = number;
+        this.imageUrl = generateUrl( color, type, number );
     }
 
-    public Card( StdSettings.CARD_COLORS color, int cardNumber )
-    {
-        this.color = color;
-        this.type = StdSettings.CARD_TYPES.NUMBER;
-        this.cardNumber = cardNumber;
-        this.urlImage = generateUrl( cardNumber, color, type );
-    }
-
-    public String generateUrl( int cardNumber, StdSettings.CARD_COLORS color, StdSettings.CARD_TYPES type )
+    public String generateUrl( CardConfiguration.COLORS color, CardConfiguration.TYPES type, int number )
     {
         String url = "/img/cards/";
 
-        if( type == StdSettings.CARD_TYPES.NUMBER )
+        if( type == CardConfiguration.TYPES.NUMBER )
         {
             switch( color )
             {
-                case RED:
-                    url += "r" + cardNumber + ".gif";
-                    break;
-                case YELLOW:
-                    url += "y" + cardNumber + ".gif";
-                    break;
-                case GREEN:
-                    url += "g" + cardNumber + ".gif";
-                    break;
-                case BLUE:
-                    url += "b" + cardNumber + ".gif";
-                    break;
+                case RED -> url += "r" + number + ".gif";
+                case YELLOW -> url += "y" + number + ".gif";
+                case GREEN -> url += "g" + number + ".gif";
+                case BLUE -> url += "b" + number + ".gif";
             }
         }
 
-        if( type == StdSettings.CARD_TYPES.SKIP )
+        if( type == CardConfiguration.TYPES.SKIP )
         {
             switch( color )
             {
-                case RED:
-                    url += "rs.gif";
-                    break;
-                case YELLOW:
-                    url += "ys.gif";
-                    break;
-                case GREEN:
-                    url += "gs.gif";
-                    break;
-                case BLUE:
-                    url += "bs.gif";
-                    break;
+                case RED -> url += "rs.gif";
+                case YELLOW -> url += "ys.gif";
+                case GREEN -> url += "gs.gif";
+                case BLUE -> url += "bs.gif";
             }
         }
 
-        if( type == StdSettings.CARD_TYPES.REVERSE )
+        if( type == CardConfiguration.TYPES.REVERSE )
         {
             switch( color )
             {
-                case RED:
-                    url += "rr.gif";
-                    break;
-                case YELLOW:
-                    url += "yr.gif";
-                    break;
-                case GREEN:
-                    url += "gr.gif";
-                    break;
-                case BLUE:
-                    url += "br.gif";
-                    break;
+                case RED -> url += "rr.gif";
+                case YELLOW -> url += "yr.gif";
+                case GREEN -> url += "gr.gif";
+                case BLUE -> url += "br.gif";
             }
         }
 
-        if( type == StdSettings.CARD_TYPES.DRAW_TWO )
+        if( type == CardConfiguration.TYPES.DRAW_TWO )
         {
             switch( color )
             {
-                case RED:
-                    url += "rd.gif";
-                    break;
-                case YELLOW:
-                    url += "yd.gif";
-                    break;
-                case GREEN:
-                    url += "gd.gif";
-                    break;
-                case BLUE:
-                    url += "bd.gif";
-                    break;
+                case RED -> url += "rd.gif";
+                case YELLOW -> url += "yd.gif";
+                case GREEN -> url += "gd.gif";
+                case BLUE -> url += "bd.gif";
             }
         }
 
-        if( type == StdSettings.CARD_TYPES.WILD )
+        if( type == CardConfiguration.TYPES.WILD )
         {
             url += "wp.gif";
         }
-        else if( type == StdSettings.CARD_TYPES.WILD_DRAW_FOUR )
+        else if( type == CardConfiguration.TYPES.WILD_DRAW_FOUR )
         {
             url += "wd.gif";
         }
@@ -117,23 +88,37 @@ public class Card
         return url;
     }
 
-    public StdSettings.CARD_COLORS getColor()
+    public CardConfiguration.COLORS getColor()
     {
         return this.color;
     }
 
-    public StdSettings.CARD_TYPES getType()
+    public void setColor( CardConfiguration.COLORS color )
+    {
+        this.color = color;
+    }
+
+    public CardConfiguration.TYPES getType()
     {
         return this.type;
     }
 
     public int getNumber()
     {
-        return this.cardNumber;
+        return this.number;
     }
 
-    public String getUrlImage()
+    public String getImageUrl()
     {
-        return this.urlImage;
+        return this.imageUrl;
+    }
+
+    public boolean isSpecial()
+    {
+        return switch( this.type )
+        {
+            case WILD, WILD_DRAW_FOUR, SKIP, REVERSE, DRAW_TWO -> true;
+            default -> false;
+        };
     }
 }
