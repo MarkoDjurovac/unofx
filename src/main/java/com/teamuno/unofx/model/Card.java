@@ -103,6 +103,11 @@ public class Card
         return this.type;
     }
 
+    public void setType( CardConfiguration.TYPES type )
+    {
+        this.type = type;
+    }
+
     public int getNumber()
     {
         return this.number;

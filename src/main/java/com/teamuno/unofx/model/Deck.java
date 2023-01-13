@@ -39,6 +39,17 @@ public class Deck
 
     public Card draw()
     {
+        if( this.deck.size() == 0 )
+        {
+            Card topCard = this.discardPile.get( 0 );
+            this.deck = this.discardPile;
+            this.discardPile = new ArrayList<>();
+            this.discardPile.add( topCard );
+            this.shuffle();
+
+            return this.deck.remove( 0 );
+        }
+
         return this.deck.remove( 0 );
     }
 
@@ -50,10 +61,5 @@ public class Deck
     public Card getTopCard()
     {
         return this.discardPile.get( 0 );
-    }
-
-    public boolean isEmpty()
-    {
-        return this.deck.isEmpty();
     }
 }

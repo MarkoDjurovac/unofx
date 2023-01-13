@@ -64,7 +64,7 @@ public class GameLogic
                 drawTwo( game );
                 return true;
             case SKIP:
-                //skip( game );
+                skip( game );
                 return true;
             case REVERSE:
                 //reverse( game );
@@ -99,9 +99,15 @@ public class GameLogic
     public static void skip( GameState game )
     {
         int index = game.getPlayerList().indexOf( game.getCurrentPlayer() );
-        int nextPlayerIndex = ( index + game.getPlayerList().size() ) % game.getPlayerList().size();
 
-        game.setCurrentPlayer( game.getPlayerList().get( nextPlayerIndex ) );
+        if( index == game.getPlayerList().size() - 1 )
+        {
+            game.setCurrentPlayer( game.getPlayerList().get( 0 ) );
+        }
+        else
+        {
+            game.setCurrentPlayer( game.getPlayerList().get( index + 1 ) );
+        }
     }
 
     public static void reverse( GameState game )

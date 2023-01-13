@@ -1,5 +1,6 @@
 package com.teamuno.unofx.controller;
 
+import com.teamuno.unofx.configuration.CardConfiguration;
 import com.teamuno.unofx.model.*;
 import com.teamuno.unofx.utilities.GameLogic;
 import com.teamuno.unofx.utilities.SceneManager;
@@ -7,12 +8,15 @@ import com.teamuno.unofx.utilities.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.Optional;
 
 public class GameController
 {
@@ -199,8 +203,8 @@ public class GameController
         Alert alert = new Alert( Alert.AlertType.ERROR );
         Stage stage = ( Stage ) alert.getDialogPane().getScene().getWindow();
         stage.getIcons().add( new Image( "/img/icon_512.png" ) );
-        alert.setTitle( "Invalid move!" );
-        alert.setHeaderText( "This card can not be played. Please select another card." );
+        alert.setTitle( "UnoFX" );
+        alert.setHeaderText( "This card cannot be played! Please select another card." );
         alert.showAndWait();
     }
 
@@ -209,9 +213,8 @@ public class GameController
         Alert alert = new Alert( Alert.AlertType.INFORMATION );
         Stage stage = ( Stage ) alert.getDialogPane().getScene().getWindow();
         stage.getIcons().add( new Image( "/img/icon_512.png" ) );
-        alert.setTitle( "UNO!" );
-        alert.setHeaderText( "UNO!" );
-        alert.setContentText( game.getCurrentPlayer().getName() + " has UNO!" );
+        alert.setTitle( "UnoFX" );
+        alert.setHeaderText( game.getCurrentPlayer().getName() + " has UNO!" );
         alert.showAndWait();
     }
 
@@ -220,9 +223,8 @@ public class GameController
         Alert alert = new Alert( Alert.AlertType.INFORMATION );
         Stage stage = ( Stage ) alert.getDialogPane().getScene().getWindow();
         stage.getIcons().add( new Image( "/img/icon_512.png" ) );
-        alert.setTitle( "Winner!" );
-        alert.setHeaderText( "Winner!" );
-        alert.setContentText( game.getCurrentPlayer().getName() + " has won!" );
+        alert.setTitle( "UnoFX" );
+        alert.setHeaderText( game.getCurrentPlayer().getName() + " has won!" );
         alert.showAndWait();
 
         this.endGame();
@@ -257,7 +259,16 @@ public class GameController
     {
         switch( card.getType() )
         {
-            case DRAW_TWO, WILD_DRAW_FOUR -> this.updateHand(this.game.getNextPlayer());
+            case DRAW_TWO -> this.updateHand( this.game.getNextPlayer() );
+            case WILD ->
+            {
+                this.choseColor();
+            }
+            case WILD_DRAW_FOUR ->
+            {
+                this.choseColor();
+                this.updateHand( this.game.getNextPlayer() );
+            }
             default -> {
             }
         }
@@ -275,5 +286,66 @@ public class GameController
         }
 
         this.dealCardsUi( player );
+    }
+
+    protected void choseColor()
+    {
+        if( this.game.getCurrentPlayer().isBot() )
+        {
+            this.game.getDeck().getTopCard().setColor( ( ( Bot ) this.game.getCurrentPlayer() ).pickColor() );
+            this.game.getDeck().getTopCard().setType( CardConfiguration.TYPES.NUMBER );
+            this.showWildCardBotAlert( this.game.getCurrentPlayer() );
+        }
+        else
+        {
+           this.showWildCardAlert();
+        }
+    }
+
+    protected void showWildCardAlert()
+    {
+        Alert alert = new Alert( Alert.AlertType.CONFIRMATION );
+        Stage stage = ( Stage ) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add( new Image( "/img/icon_512.png" ) );
+        alert.setTitle( "Color Picker" );
+        alert.setHeaderText( "Please choose a color!" );
+
+        ButtonType red = new ButtonType( "RED" );
+        ButtonType green = new ButtonType( "GREEN" );
+        ButtonType blue = new ButtonType( "BLUE" );
+        ButtonType yellow = new ButtonType( "YELLOW" );
+
+        alert.getButtonTypes().setAll( red, green, blue, yellow );
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if( result.get() == red )
+        {
+            this.game.getDeck().getTopCard().setColor( CardConfiguration.COLORS.RED );
+        }
+        else if( result.get() == green )
+        {
+            this.game.getDeck().getTopCard().setColor( CardConfiguration.COLORS.GREEN );
+        }
+        else if( result.get() == blue )
+        {
+            this.game.getDeck().getTopCard().setColor( CardConfiguration.COLORS.BLUE );
+        }
+        else if( result.get() == yellow )
+        {
+            this.game.getDeck().getTopCard().setColor( CardConfiguration.COLORS.YELLOW );
+        }
+
+        this.game.getDeck().getTopCard().setType( CardConfiguration.TYPES.NUMBER );
+    }
+
+    protected void showWildCardBotAlert( Player player )
+    {
+        Alert alert = new Alert( Alert.AlertType.INFORMATION );
+        Stage stage = ( Stage ) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add( new Image( "/img/icon_512.png" ) );
+        alert.setTitle( "Wild Card" );
+        alert.setHeaderText( player.getName() + " has chosen " + this.game.getDeck().getTopCard().getColor().toString()  + " as the new color." );
+        alert.showAndWait();
     }
 }

@@ -2,10 +2,11 @@ package com.teamuno.unofx.model;
 
 import com.teamuno.unofx.utilities.GameLogic;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameState
+public class GameState implements Serializable
 {
     Deck deck;
     private List<Player> playerList;
