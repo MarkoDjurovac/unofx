@@ -16,7 +16,7 @@ public class GameLogic
 
         for( int i = 0; i < numberOfCards; i++ )
         {
-            for (Player player : playerList)
+            for( Player player : playerList)
             {
                 player.getHand().add( deck.draw() );
             }

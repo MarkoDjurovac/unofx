@@ -13,6 +13,7 @@ public class DeckFactory
     public static void generateDeck( List<Card> deck )
     {
         int regularCardsPerSet = CustomGameChecker.isCustomGame() ? CustomGameConfiguration.REGULAR_CARDS_PER_SET : DefaultGameConfiguration.REGULAR_CARDS_PER_SET;
+
         for( int i = 0; i < regularCardsPerSet; i++ )
         {
             for( int j = 0; j <= 9; j++ )
@@ -25,6 +26,7 @@ public class DeckFactory
         }
 
         int specialCardsPerSet = CustomGameChecker.isCustomGame() ? CustomGameConfiguration.SPECIAL_CARDS_PER_SET : DefaultGameConfiguration.SPECIAL_CARDS_PER_SET;
+
         for(int i = 0; i < specialCardsPerSet; i++ )
         {
             deck.add( new Card( CardConfiguration.COLORS.RED, CardConfiguration.TYPES.SKIP, 10 ) );
@@ -44,12 +46,14 @@ public class DeckFactory
         }
 
         int wildCardsPerSet = CustomGameChecker.isCustomGame() ? CustomGameConfiguration.WILD_CARDS_PER_SET : DefaultGameConfiguration.WILD_CARDS_PER_SET;
+
         for(int i = 0; i < wildCardsPerSet; i++ )
         {
             deck.add( new Card( CardConfiguration.COLORS.BLACK, CardConfiguration.TYPES.WILD, 13 ) );
         }
 
         int wildDrawFourCardsPerSet = CustomGameChecker.isCustomGame() ? CustomGameConfiguration.WILD_DRAW_FOUR_CARDS_PER_SET : DefaultGameConfiguration.WILD_DRAW_FOUR_CARDS_PER_SET;
+
         for( int i = 0; i < wildDrawFourCardsPerSet; i++ )
         {
             deck.add( new Card( CardConfiguration.COLORS.BLACK, CardConfiguration.TYPES.WILD_DRAW_FOUR, 14 ) );

@@ -29,7 +29,6 @@ public class Deck
         {
             int a = this.random.nextInt( this.deck.size() );
             int b = this.random.nextInt( this.deck.size() );
-
             Card temp = this.deck.get( a );
             this.deck.set( a, this.deck.get( b ) );
             this.deck.set( b, temp );
