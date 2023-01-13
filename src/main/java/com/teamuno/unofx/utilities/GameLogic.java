@@ -1,6 +1,7 @@
 package com.teamuno.unofx.utilities;
 
 import com.teamuno.unofx.configuration.CardConfiguration;
+import com.teamuno.unofx.configuration.CustomGameConfiguration;
 import com.teamuno.unofx.configuration.DefaultGameConfiguration;
 import com.teamuno.unofx.model.*;
 
@@ -9,11 +10,13 @@ import java.util.List;
 
 public class GameLogic
 {
-    public static void dealCards(List<Player> playerList, Deck deck )
+    public static void dealCards( List<Player> playerList, Deck deck )
     {
-        for( Player player : playerList )
+        int numberOfCards = CustomGameChecker.isCustomGame() ? CustomGameConfiguration.CARDS_PER_PLAYER : DefaultGameConfiguration.CARDS_PER_PLAYER;
+
+        for( int i = 0; i < numberOfCards; i++ )
         {
-            for(int i = 0; i < DefaultGameConfiguration.CARDS_PER_PLAYER; i++ )
+            for (Player player : playerList)
             {
                 player.getHand().add( deck.draw() );
             }
@@ -54,23 +57,17 @@ public class GameLogic
     {
         switch( card.getType() )
         {
-            case WILD:
-                // TODO
-                return true;
-            case WILD_DRAW_FOUR:
-                wildDrawFour( game );
-                return true;
-            case DRAW_TWO:
-                drawTwo( game );
-                return true;
-            case SKIP:
-                skip( game );
-                return true;
-            case REVERSE:
-                //reverse( game );
-                return true;
-            default:
-                break;
+            case WILD_DRAW_FOUR -> wildDrawFour( game );
+            case DRAW_TWO -> drawTwo( game );
+            case SKIP -> {
+                // skip( game );
+            }
+            case REVERSE -> {
+                // reverse( game );
+            }
+            default -> {
+
+            }
         }
 
         return false;

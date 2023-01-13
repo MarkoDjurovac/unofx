@@ -2,6 +2,7 @@ package com.teamuno.unofx.controller;
 
 import com.teamuno.unofx.configuration.CardConfiguration;
 import com.teamuno.unofx.model.*;
+import com.teamuno.unofx.utilities.CustomGameChecker;
 import com.teamuno.unofx.utilities.GameLogic;
 import com.teamuno.unofx.utilities.SceneManager;
 
@@ -13,7 +14,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Optional;
@@ -43,7 +43,7 @@ public class GameController
         botScrollPane.vbarPolicyProperty().set( ScrollPane.ScrollBarPolicy.NEVER );
         playerScrollPane.vbarPolicyProperty().set( ScrollPane.ScrollBarPolicy.NEVER );
 
-        this.game = new GameState( new Human( "Olaf" ) );
+        game = new GameState( CustomGameChecker.isCustomGame() );
 
         for( Player player : this.game.getPlayerList() )
         {
@@ -189,6 +189,9 @@ public class GameController
             }
         }
 
+        System.out.println( game.getCurrentPlayer().getName() + " cards in hand: " + game.getCurrentPlayer().getHand().size() );
+
+
         GameController.endTurn( this, this.game );
     }
 
@@ -198,39 +201,7 @@ public class GameController
         this.discarded_pile.setImage( new Image( card.getImageUrl() ) );
     }
 
-    protected void showInvalidMoveAlert()
-    {
-        Alert alert = new Alert( Alert.AlertType.ERROR );
-        Stage stage = ( Stage ) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add( new Image( "/img/icon_512.png" ) );
-        alert.setTitle( "UnoFX" );
-        alert.setHeaderText( "This card cannot be played! Please select another card." );
-        alert.showAndWait();
-    }
-
-    public void showUnoAlert( GameState game )
-    {
-        Alert alert = new Alert( Alert.AlertType.INFORMATION );
-        Stage stage = ( Stage ) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add( new Image( "/img/icon_512.png" ) );
-        alert.setTitle( "UnoFX" );
-        alert.setHeaderText( game.getCurrentPlayer().getName() + " has UNO!" );
-        alert.showAndWait();
-    }
-
-    public void showWinnerAlert( GameState game )
-    {
-        Alert alert = new Alert( Alert.AlertType.INFORMATION );
-        Stage stage = ( Stage ) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add( new Image( "/img/icon_512.png" ) );
-        alert.setTitle( "UnoFX" );
-        alert.setHeaderText( game.getCurrentPlayer().getName() + " has won!" );
-        alert.showAndWait();
-
-        this.endGame();
-    }
-
-    public static void endTurn( GameController gc, GameState game )
+    public static void endTurn( GameController controller, GameState game )
     {
         int index = game.getPlayerList().indexOf( game.getCurrentPlayer() );
         int nextPlayerIndex = ( index + 1 ) % game.getPlayerList().size();
@@ -239,19 +210,7 @@ public class GameController
 
         if( game.getCurrentPlayer().isBot() )
         {
-            gc.botTurn( game);
-        }
-    }
-
-    protected void endGame()
-    {
-        try
-        {
-            SceneManager.endGame( getClass().getResource( "/view/main-menu.fxml" ), ( Stage ) this.playerHand.getScene().getWindow() );
-        }
-        catch( IOException e )
-        {
-            e.printStackTrace();
+            controller.botTurn( game);
         }
     }
 
@@ -300,6 +259,50 @@ public class GameController
         {
            this.showWildCardAlert();
         }
+    }
+
+    protected void endGame()
+    {
+        try
+        {
+            SceneManager.endGame( getClass().getResource( "/view/main-menu.fxml" ), ( Stage ) this.playerHand.getScene().getWindow() );
+        }
+        catch( IOException e )
+        {
+            e.printStackTrace();
+        }
+    }
+
+    protected void showInvalidMoveAlert()
+    {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(new Image("/img/icon_512.png"));
+        alert.setTitle("UnoFX");
+        alert.setHeaderText("This card cannot be played! Please select another card.");
+        alert.showAndWait();
+    }
+
+    public void showUnoAlert( GameState game )
+    {
+        Alert alert = new Alert( Alert.AlertType.INFORMATION );
+        Stage stage = ( Stage ) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add( new Image( "/img/icon_512.png" ) );
+        alert.setTitle( "UnoFX" );
+        alert.setHeaderText( game.getCurrentPlayer().getName() + " has UNO!" );
+        alert.showAndWait();
+    }
+
+    public void showWinnerAlert( GameState game )
+    {
+        Alert alert = new Alert( Alert.AlertType.INFORMATION );
+        Stage stage = ( Stage ) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add( new Image( "/img/icon_512.png" ) );
+        alert.setTitle( "UnoFX" );
+        alert.setHeaderText( game.getCurrentPlayer().getName() + " has won!" );
+        alert.showAndWait();
+
+        this.endGame();
     }
 
     protected void showWildCardAlert()

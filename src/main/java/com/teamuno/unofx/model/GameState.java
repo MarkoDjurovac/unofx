@@ -1,5 +1,8 @@
 package com.teamuno.unofx.model;
 
+import com.teamuno.unofx.configuration.CustomGameConfiguration;
+import com.teamuno.unofx.configuration.DefaultGameConfiguration;
+import com.teamuno.unofx.utilities.CustomGameChecker;
 import com.teamuno.unofx.utilities.GameLogic;
 
 import java.io.Serializable;
@@ -12,10 +15,11 @@ public class GameState implements Serializable
     private List<Player> playerList;
     private Player currentPlayer;
 
-    public GameState( Player player )
+    public GameState( boolean isCustomGame )
     {
         this.playerList = new ArrayList<>();
-        this.startGame( player );
+
+        this.startGame( CustomGameChecker.isCustomGame() ? new Human( CustomGameConfiguration.PLAYER_NAME ) : new Human( DefaultGameConfiguration.PLAYER_NAME ) );
     }
 
     public void startGame( Player player )

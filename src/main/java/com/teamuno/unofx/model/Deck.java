@@ -19,8 +19,7 @@ public class Deck
         this.deck = new ArrayList<>();
         this.discardPile = new ArrayList<>();
         this.random = new Random();
-        DeckFactory.generateDefaultDeck( this.deck );
-
+        DeckFactory.generateDeck( this.deck );
         this.shuffle();
     }
 
