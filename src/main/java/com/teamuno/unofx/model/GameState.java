@@ -9,7 +9,7 @@ import com.teamuno.unofx.configuration.DefaultGameConfiguration;
 import com.teamuno.unofx.utilities.CustomGameChecker;
 import com.teamuno.unofx.utilities.GameLogic;
 
-public class GameState implements Serializable
+public class GameState
 {
     Deck deck;
     private List<Player> playerList;

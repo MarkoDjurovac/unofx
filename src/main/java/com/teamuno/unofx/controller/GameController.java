@@ -2,6 +2,7 @@ package com.teamuno.unofx.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ScrollPane;
@@ -10,7 +11,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 import com.teamuno.unofx.configuration.CardConfiguration;
 import com.teamuno.unofx.model.*;
@@ -36,13 +39,15 @@ public class GameController
     @FXML
     ScrollPane playerScrollPane;
 
-    @FXML
-    public void initialize()
+    public void initialize( )
     {
         botScrollPane.vbarPolicyProperty().set( ScrollPane.ScrollBarPolicy.NEVER );
         playerScrollPane.vbarPolicyProperty().set( ScrollPane.ScrollBarPolicy.NEVER );
 
-        game = new GameState();
+        if( this.game == null )
+        {
+            this.game = new GameState();
+        }
 
         for( Player player : this.game.getPlayerList() )
         {

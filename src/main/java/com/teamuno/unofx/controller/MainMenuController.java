@@ -46,6 +46,12 @@ public class MainMenuController
     }
 
     @FXML
+    public void loadGame( ActionEvent event ) throws IOException
+    {
+        SceneManager.changeScene( event, getClass().getResource( "/fxml/game.fxml" ) );
+    }
+
+    @FXML
     protected void toggleSettings()
     {
         if( !settingsMenu.isVisible() )
