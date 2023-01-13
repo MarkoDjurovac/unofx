@@ -11,7 +11,9 @@ import com.teamuno.unofx.utilities.GameLogic;
 public class GameState
 {
     Deck deck;
+
     private List<Player> playerList;
+
     private Player currentPlayer;
 
     public GameState()
