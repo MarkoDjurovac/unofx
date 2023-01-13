@@ -15,7 +15,6 @@
         </image>
     </ImageView>
     <Button onAction="#startGame" text="Start Game" />
-    <Button onAction="#loadGame" text="Load SaveGame" />
     <Button onAction="#toggleSettings" text="Settings" />
     <Button onAction="#quitProgram" text="Quit Game" />
     <VBox alignment="CENTER" fx:id="settingsMenu" visible="false" >
