@@ -2,7 +2,6 @@ package com.teamuno.unofx.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ScrollPane;
@@ -11,9 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.net.URL;
 import java.util.Optional;
-import java.util.ResourceBundle;
 
 import com.teamuno.unofx.configuration.CardConfiguration;
 import com.teamuno.unofx.model.*;
@@ -79,7 +76,7 @@ public class GameController
         {
             if( player.isBot() )
             {
-                this.renderImage( );
+                this.renderImage();
             }
             else
             {
@@ -192,9 +189,6 @@ public class GameController
                 this.showWinnerAlert( this.game );
             }
         }
-
-        System.out.println( game.getCurrentPlayer().getName() + " cards in hand: " + game.getCurrentPlayer().getHand().size() );
-
 
         GameController.endTurn( this, this.game );
     }

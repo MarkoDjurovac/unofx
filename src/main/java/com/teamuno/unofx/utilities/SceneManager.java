@@ -1,6 +1,5 @@
 package com.teamuno.unofx.utilities;
 
-import com.teamuno.unofx.controller.GameController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
