@@ -1,12 +1,12 @@
 package com.teamuno.unofx.factory;
 
+import java.util.List;
+
 import com.teamuno.unofx.configuration.CardConfiguration;
 import com.teamuno.unofx.configuration.CustomGameConfiguration;
 import com.teamuno.unofx.configuration.DefaultGameConfiguration;
 import com.teamuno.unofx.model.Card;
 import com.teamuno.unofx.utilities.CustomGameChecker;
-
-import java.util.List;
 
 public class DeckFactory
 {

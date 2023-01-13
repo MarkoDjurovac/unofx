@@ -1,10 +1,10 @@
 package com.teamuno.unofx.utilities;
 
+import java.util.Map;
+
 import com.teamuno.unofx.configuration.CustomGameConfiguration;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
-
-import java.util.Map;
 
 public class CustomGameChecker
 {

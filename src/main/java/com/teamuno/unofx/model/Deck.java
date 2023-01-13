@@ -1,10 +1,10 @@
 package com.teamuno.unofx.model;
 
-import com.teamuno.unofx.factory.DeckFactory;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import com.teamuno.unofx.factory.DeckFactory;
 
 public class Deck
 {

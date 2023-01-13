@@ -34,11 +34,6 @@ public abstract class Player
         return this.name;
     }
 
-    public void setName( String value )
-    {
-        this.name = value;
-    }
-
     public List<Card> getHand()
     {
         return this.hand;

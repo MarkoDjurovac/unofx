@@ -1,12 +1,12 @@
 package com.teamuno.unofx.utilities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.teamuno.unofx.configuration.CardConfiguration;
 import com.teamuno.unofx.configuration.CustomGameConfiguration;
 import com.teamuno.unofx.configuration.DefaultGameConfiguration;
 import com.teamuno.unofx.model.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class GameLogic
 {
@@ -66,7 +66,6 @@ public class GameLogic
                 // reverse( game );
             }
             default -> {
-
             }
         }
 

@@ -1,12 +1,9 @@
 package com.teamuno.unofx.model;
 
+import java.util.Random;
+
 import com.teamuno.unofx.configuration.CardConfiguration;
 import com.teamuno.unofx.utilities.GameLogic;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
 
 public class Bot extends Player
 {

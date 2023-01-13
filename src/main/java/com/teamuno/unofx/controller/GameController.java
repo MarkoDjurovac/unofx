@@ -1,11 +1,5 @@
 package com.teamuno.unofx.controller;
 
-import com.teamuno.unofx.configuration.CardConfiguration;
-import com.teamuno.unofx.model.*;
-import com.teamuno.unofx.utilities.CustomGameChecker;
-import com.teamuno.unofx.utilities.GameLogic;
-import com.teamuno.unofx.utilities.SceneManager;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -17,6 +11,11 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Optional;
+
+import com.teamuno.unofx.configuration.CardConfiguration;
+import com.teamuno.unofx.model.*;
+import com.teamuno.unofx.utilities.GameLogic;
+import com.teamuno.unofx.utilities.SceneManager;
 
 public class GameController
 {
@@ -43,7 +42,7 @@ public class GameController
         botScrollPane.vbarPolicyProperty().set( ScrollPane.ScrollBarPolicy.NEVER );
         playerScrollPane.vbarPolicyProperty().set( ScrollPane.ScrollBarPolicy.NEVER );
 
-        game = new GameState( CustomGameChecker.isCustomGame() );
+        game = new GameState();
 
         for( Player player : this.game.getPlayerList() )
         {

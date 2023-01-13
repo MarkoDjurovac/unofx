@@ -1,17 +1,17 @@
 package com.teamuno.unofx.controller;
 
-import com.teamuno.unofx.configuration.DefaultGameConfiguration;
-import com.teamuno.unofx.utilities.CustomGameChecker;
-import com.teamuno.unofx.utilities.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.teamuno.unofx.configuration.DefaultGameConfiguration;
+import com.teamuno.unofx.utilities.CustomGameChecker;
+import com.teamuno.unofx.utilities.SceneManager;
 
 public class MainMenuController
 {
