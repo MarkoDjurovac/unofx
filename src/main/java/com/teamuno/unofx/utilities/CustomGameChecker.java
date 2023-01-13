@@ -16,24 +16,24 @@ public class CustomGameChecker
         {
             if( property instanceof Spinner )
             {
-                Spinner spinner = ( Spinner ) property;
+                @SuppressWarnings( "unchecked" )
+                Spinner<Integer> spinner = ( Spinner<Integer> ) property;
 
                 spinner.valueProperty().addListener( ( observable, oldValue, newValue ) ->
                 {
                     switch( spinner.getId() )
                     {
-                        case "regularCards" -> CustomGameConfiguration.REGULAR_CARDS_PER_SET = ( int ) newValue;
-                        case "specialCards" -> CustomGameConfiguration.SPECIAL_CARDS_PER_SET = ( int ) newValue;
-                        case "wildCards" -> CustomGameConfiguration.WILD_CARDS_PER_SET = ( int ) newValue;
-                        case "wildDrawFours" -> CustomGameConfiguration.WILD_DRAW_FOUR_CARDS_PER_SET = ( int ) newValue;
-                        case "cardsPerPlayer" -> CustomGameConfiguration.CARDS_PER_PLAYER = ( int ) newValue;
+                        case "regularCards" -> CustomGameConfiguration.REGULAR_CARDS_PER_SET = newValue;
+                        case "specialCards" -> CustomGameConfiguration.SPECIAL_CARDS_PER_SET = newValue;
+                        case "wildCards" -> CustomGameConfiguration.WILD_CARDS_PER_SET = newValue;
+                        case "wildDrawFours" -> CustomGameConfiguration.WILD_DRAW_FOUR_CARDS_PER_SET = newValue;
+                        case "cardsPerPlayer" -> CustomGameConfiguration.CARDS_PER_PLAYER = newValue;
                     }
                     isCustomGame = true;
                 });
             }
-            else if( property instanceof TextField )
+            else if( property instanceof TextField textField )
             {
-                TextField textField = ( TextField ) property;
 
                 textField.textProperty().addListener( ( observable, oldValue, newValue ) ->
                 {
