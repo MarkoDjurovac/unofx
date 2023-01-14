@@ -80,6 +80,7 @@ public class Card
         {
             url += "wp.gif";
         }
+
         else if( type == CardConfiguration.TYPES.WILD_DRAW_FOUR )
         {
             url += "wd.gif";

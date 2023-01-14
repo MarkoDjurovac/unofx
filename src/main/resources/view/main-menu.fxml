@@ -23,25 +23,25 @@
         <Label>Regular cards per set:</Label>
         <Spinner fx:id="regularCards">
             <valueFactory>
-                <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="9" initialValue="2"/>
+                <SpinnerValueFactory.IntegerSpinnerValueFactory min="1" max="9" initialValue="2"/>
             </valueFactory>
         </Spinner>
         <Label>Wild cards per set:</Label>
         <Spinner fx:id="wildCards">
             <valueFactory>
-                <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="9" initialValue="4" />
+                <SpinnerValueFactory.IntegerSpinnerValueFactory min="1" max="9" initialValue="4" />
             </valueFactory>
         </Spinner>
         <Label>Special cards per set:</Label>
         <Spinner fx:id="specialCards">
             <valueFactory>
-                <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="9" initialValue="2" />
+                <SpinnerValueFactory.IntegerSpinnerValueFactory min="1" max="9" initialValue="2" />
             </valueFactory>
         </Spinner>
         <Label>Draw fours per set:</Label>
         <Spinner fx:id="wildDrawFours">
             <valueFactory>
-                <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="9" initialValue="4" />
+                <SpinnerValueFactory.IntegerSpinnerValueFactory min="1" max="9" initialValue="4" />
             </valueFactory>
         </Spinner>
         <Label>Cards per player:</Label>
