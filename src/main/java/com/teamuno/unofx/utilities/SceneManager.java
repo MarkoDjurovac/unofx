@@ -23,7 +23,7 @@ public class SceneManager
 
     public static void endGame( URL fxml, Stage currentStage ) throws IOException
     {
-        Parent root = FXMLLoader.load(fxml);
+        Parent root = FXMLLoader.load( fxml );
         Stage stage = currentStage;
         Scene scene = new Scene( root );
         stage.setScene( scene );
