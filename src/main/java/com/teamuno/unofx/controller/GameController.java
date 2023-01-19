@@ -67,7 +67,7 @@ public class GameController
 
         this.renderImage( card );
 
-        GameController.endTurn( this, this.game );
+        this.endTurn( this.game );
     }
 
     protected void dealCardsUi( Player player )
@@ -117,7 +117,7 @@ public class GameController
             {
                 if( GameLogic.isValidMove( game.getDeck().getTopCard(), card ) )
                 {
-                    GameLogic.playCard( ( Human ) this.game.getCurrentPlayer(), game, card );
+                    ( ( Human ) game.getCurrentPlayer() ).playCard( this.game, card );
 
                     if( card.isSpecial() )
                     {
@@ -126,21 +126,18 @@ public class GameController
 
                     this.playCardUi( imageView );
 
-                    if( GameLogic.checkForUno( this.game.getPlayerList().get( 0 ) ) )
+                    if( GameLogic.checkForUno( this.game.getCurrentPlayer() ) )
                     {
                         this.showUnoAlert( this.game );
+                        this.endTurn( this.game );
                     }
-
-                    if( GameLogic.checkForWin( this.game.getPlayerList().get( 0 ) ) )
+                    else if( GameLogic.checkForWin( this.game.getCurrentPlayer() ) )
                     {
                         this.showWinnerAlert( this.game );
                     }
-
-                    GameController.endTurn( this, this.game );
-
-                    if( game.getCurrentPlayer().isBot() )
+                    else
                     {
-                        this.botTurn( this.game );
+                        this.endTurn( this.game );
                     }
                 }
                 else
@@ -178,19 +175,20 @@ public class GameController
                 }
             }
 
-
-            if( GameLogic.checkForUno( this.game.getPlayerList().get( 1 ) ) )
+            if( GameLogic.checkForUno( this.game.getCurrentPlayer() ) )
             {
                 this.showUnoAlert( this.game );
+                this.endTurn( this.game );
             }
-
-            if( GameLogic.checkForWin( this.game.getPlayerList().get( 1 ) ) )
+            else if( GameLogic.checkForWin( this.game.getCurrentPlayer() ) )
             {
                 this.showWinnerAlert( this.game );
             }
+            else
+            {
+                this.endTurn( this.game );
+            }
         }
-
-        GameController.endTurn( this, this.game );
     }
 
     protected void botPlayCardUi( Card card )
@@ -199,7 +197,7 @@ public class GameController
         this.discarded_pile.setImage( new Image( card.getImageUrl() ) );
     }
 
-    public static void endTurn( GameController controller, GameState game )
+    public void endTurn( GameState game )
     {
         int index = game.getPlayerList().indexOf( game.getCurrentPlayer() );
         int nextPlayerIndex = ( index + 1 ) % game.getPlayerList().size();
@@ -208,7 +206,7 @@ public class GameController
 
         if( game.getCurrentPlayer().isBot() )
         {
-            controller.botTurn( game);
+            this.botTurn( game );
         }
     }
 
@@ -273,11 +271,11 @@ public class GameController
 
     protected void showInvalidMoveAlert()
     {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add(new Image("/img/icon_512.png"));
-        alert.setTitle("UnoFX");
-        alert.setHeaderText("This card cannot be played! Please select another card.");
+        Alert alert = new Alert( Alert.AlertType.ERROR );
+        Stage stage = ( Stage ) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add( new Image( "/img/icon_512.png" ) );
+        alert.setTitle( "UnoFX" );
+        alert.setHeaderText( "This card cannot be played! Please select another card." );
         alert.showAndWait();
     }
 

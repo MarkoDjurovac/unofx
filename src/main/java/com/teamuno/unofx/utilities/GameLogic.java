@@ -48,11 +48,6 @@ public class GameLogic
         return false;
     }
 
-    public static Card playCard( Human human, GameState game, Card card )
-    {
-        return human.playCard( game, card );
-    }
-
     public static boolean checkForSpecialCard( GameState game, Card card )
     {
         switch( card.getType() )
@@ -74,36 +69,24 @@ public class GameLogic
 
     public static void wildDrawFour( GameState game )
     {
-        int index = game.getPlayerList().indexOf( game.getCurrentPlayer() );
-        int nextPlayerIndex = ( index + 1 ) % game.getPlayerList().size();
-
-        game.getPlayerList().get( nextPlayerIndex ).getHand().add( game.getDeck().draw() );
-        game.getPlayerList().get( nextPlayerIndex ).getHand().add( game.getDeck().draw() );
-        game.getPlayerList().get( nextPlayerIndex ).getHand().add( game.getDeck().draw() );
-        game.getPlayerList().get( nextPlayerIndex ).getHand().add( game.getDeck().draw() );
+        game.getNextPlayer().getHand().add( game.getDeck().draw() );
+        game.getNextPlayer().getHand().add( game.getDeck().draw() );
+        game.getNextPlayer().getHand().add( game.getDeck().draw() );
+        game.getNextPlayer().getHand().add( game.getDeck().draw() );
     }
 
     public static void drawTwo( GameState game )
     {
-        int index = game.getPlayerList().indexOf( game.getCurrentPlayer() );
-        int nextPlayerIndex = ( index + 1 ) % game.getPlayerList().size();
-
-        game.getPlayerList().get( nextPlayerIndex ).getHand().add( game.getDeck().draw() );
-        game.getPlayerList().get( nextPlayerIndex ).getHand().add( game.getDeck().draw() );
+        game.getNextPlayer().getHand().add( game.getDeck().draw() );
+        game.getNextPlayer().getHand().add( game.getDeck().draw() );
     }
 
     public static void skip( GameState game )
     {
         int index = game.getPlayerList().indexOf( game.getCurrentPlayer() );
+        int nextPlayerIndex = ( index + game.getPlayerList().size() ) % game.getPlayerList().size();
 
-        if( index == game.getPlayerList().size() - 1 )
-        {
-            game.setCurrentPlayer( game.getPlayerList().get( 0 ) );
-        }
-        else
-        {
-            game.setCurrentPlayer( game.getPlayerList().get( index + 1 ) );
-        }
+        game.setCurrentPlayer( game.getPlayerList().get( nextPlayerIndex ) );
     }
 
     public static void reverse( GameState game )
