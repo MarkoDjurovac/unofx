@@ -4,11 +4,11 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" prefHeight="600" prefWidth="800" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamuno.unofx.controller.GameController">
+<VBox fx:id="vboxGame" alignment="CENTER" prefHeight="600" prefWidth="800" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamuno.unofx.controller.GameController">
     <ScrollPane fx:id="botScrollPane">
         <HBox fx:id="botHand" prefHeight="150" prefWidth="800" />
     </ScrollPane>
-    <HBox fx:id="gameField" prefHeight="200" prefWidth="800">
+    <HBox fx:id="gameField" prefHeight="210" prefWidth="800">
         <ImageView fitHeight="113.0" fitWidth="79.0" onMouseClicked="#drawCardUi" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@../img/cards/back.gif" />
@@ -16,9 +16,9 @@
         </ImageView>
         <ImageView fx:id="discarded_pile" />
     </HBox>
-    <ScrollPane fx:id="playerScrollPane">
+    <ScrollPane fx:id="playerScrollPane" >
         <HBox fx:id="playerHand" prefHeight="150" prefWidth="800">
         </HBox>
     </ScrollPane>
-    <Button onAction="#quitGame" text="Back To Main Menu" />
+    <Button fx:id ="quitGame" onAction="#quitGame" text="Back To Main Menu" />
 </VBox>
