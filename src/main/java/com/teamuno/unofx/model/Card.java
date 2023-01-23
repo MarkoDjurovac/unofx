@@ -2,6 +2,12 @@ package com.teamuno.unofx.model;
 
 import com.teamuno.unofx.configuration.CardConfiguration;
 
+import java.io.IOException;
+
+/**
+ * Represents a uno card.
+ * @author Marc Göring
+ */
 public class Card
 {
     private CardConfiguration.COLORS color;
@@ -12,6 +18,11 @@ public class Card
 
     private String imageUrl;
 
+    /**
+     * Constructor for a new card.
+     * @param color The color of the card.
+     * @param number The type of the card.
+     */
     public Card( CardConfiguration.COLORS color, int number )
     {
         this.color = color;
@@ -20,6 +31,12 @@ public class Card
         this.imageUrl = generateUrl( color, type, number );
     }
 
+    /**
+     * Constructor for a new card.
+     * @param color The color of the card.
+     * @param number The type of the card.
+     * @param type The type of the card.
+     */
     public Card( CardConfiguration.COLORS color, CardConfiguration.TYPES type, int number )
     {
         this.color = color;
@@ -28,6 +45,12 @@ public class Card
         this.imageUrl = generateUrl( color, type, number );
     }
 
+    /**
+     * Generates the url for the image of the card.
+     * @param color The color of the card.
+     * @param number The type of the card.
+     * @return The url of the image.
+     */
     public String generateUrl( CardConfiguration.COLORS color, CardConfiguration.TYPES type, int number )
     {
         String url = "/img/cards/";
@@ -40,28 +63,6 @@ public class Card
                 case YELLOW -> url += "y" + number + ".gif";
                 case GREEN -> url += "g" + number + ".gif";
                 case BLUE -> url += "b" + number + ".gif";
-            }
-        }
-
-        if( type == CardConfiguration.TYPES.SKIP )
-        {
-            switch( color )
-            {
-                case RED -> url += "rs.gif";
-                case YELLOW -> url += "ys.gif";
-                case GREEN -> url += "gs.gif";
-                case BLUE -> url += "bs.gif";
-            }
-        }
-
-        if( type == CardConfiguration.TYPES.REVERSE )
-        {
-            switch( color )
-            {
-                case RED -> url += "rr.gif";
-                case YELLOW -> url += "yr.gif";
-                case GREEN -> url += "gr.gif";
-                case BLUE -> url += "br.gif";
             }
         }
 
@@ -89,41 +90,67 @@ public class Card
         return url;
     }
 
+    /**
+     * Getter for the color of the card.
+     * @return The color of the card.
+     */
     public CardConfiguration.COLORS getColor()
     {
         return this.color;
     }
 
+    /**
+     * Setter for the color of the card.
+     */
     public void setColor( CardConfiguration.COLORS color )
     {
         this.color = color;
     }
 
+    /**
+     * Getter for the type of the card.
+     * @return The type of the card.
+     */
     public CardConfiguration.TYPES getType()
     {
         return this.type;
     }
 
+    /**
+     * Setter for the type of the card.
+     */
     public void setType( CardConfiguration.TYPES type )
     {
         this.type = type;
     }
 
+    /**
+     * Getter for the number of the card.
+     * @return The number of the card.
+     */
     public int getNumber()
     {
         return this.number;
     }
 
+    /**
+     * Getter for the image url of the card.
+     * @return The image url of the card.
+     */
     public String getImageUrl()
     {
         return this.imageUrl;
     }
 
+    /**
+     * Checks if the card is a special card
+     * @return true if the card is a special card, false if not.
+     */
     public boolean isSpecial()
     {
         return switch( this.type )
         {
-            case WILD, WILD_DRAW_FOUR, SKIP, REVERSE, DRAW_TWO -> true;
+            case WILD, WILD_DRAW_FOUR, DRAW_TWO -> true;
             default -> false;
         };
     }

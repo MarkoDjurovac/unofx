@@ -4,6 +4,10 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
+<!--
+    Represents the game view.
+    @author Ahmet Emin Emre
+-->
 <VBox fx:id="vboxGame" alignment="CENTER" prefHeight="600" prefWidth="800" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamuno.unofx.controller.GameController">
     <ScrollPane fx:id="botScrollPane">
         <HBox fx:id="botHand" prefHeight="150" prefWidth="800" />

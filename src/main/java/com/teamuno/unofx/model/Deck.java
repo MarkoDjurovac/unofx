@@ -6,6 +6,10 @@ import java.util.Random;
 
 import com.teamuno.unofx.factory.DeckFactory;
 
+/**
+ * Represents the uno deck.
+ * @author Armin Saric
+ */
 public class Deck
 {
     private List<Card> deck;
@@ -23,6 +27,9 @@ public class Deck
         this.shuffle();
     }
 
+    /**
+     * Method for shuffling the deck.
+     */
     public void shuffle()
     {
         for( int i = 0; i < this.deck.size(); i++ )
@@ -35,6 +42,10 @@ public class Deck
         }
     }
 
+    /**
+     * Method for drawing a card from the deck.
+     * @return the card that has been drawn.
+     */
     public Card draw()
     {
         if( this.deck.size() == 0 )
@@ -51,11 +62,19 @@ public class Deck
         return this.deck.remove( 0 );
     }
 
+    /**
+     * Method for adding a card to the discard pile.
+     * @param card the card that has to be added to the discard pile.
+     */
     public void discard( Card card )
     {
         this.discardPile.add( 0, card );
     }
 
+    /**
+     * Getter for top card of the discard pile.
+     * @return the top card of the discard pile.
+     */
     public Card getTopCard()
     {
         return this.discardPile.get( 0 );

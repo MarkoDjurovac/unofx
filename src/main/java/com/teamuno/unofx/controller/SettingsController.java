@@ -12,6 +12,11 @@ import java.util.Map;
 import com.teamuno.unofx.configuration.DefaultGameConfiguration;
 import com.teamuno.unofx.utilities.CustomGameChecker;
 import com.teamuno.unofx.utilities.SceneManager;
+
+/**
+ * Controller for the settings scene.
+ * @author Ahmet Emin Emre
+ */
 public class SettingsController {
     @FXML
     private VBox settingsMenu;
@@ -33,27 +38,43 @@ public class SettingsController {
     @FXML
     private Spinner<Integer> cardsPerPlayer;
 
+    /**
+     * Starts the game from the settings scene
+     * @param event The event that triggered the method.
+     * @throws IOException when the scene could not be changed.
+     */
     @FXML
-    protected void startInSettings(ActionEvent event) throws IOException
+    protected void startInSettings( ActionEvent event ) throws IOException
     {
         SceneManager.changeScene( event, getClass().getResource("/view/game.fxml" ) );
     }
 
+    /**
+     * Changes the scene to the main menu scene.
+     * @param event The event that triggered the method.
+     * @throws IOException when the scene could not be changed.
+     */
     @FXML
     protected void backToMenu(ActionEvent event) throws IOException
     {
         SceneManager.changeScene( event, getClass().getResource( "/view/main-menu.fxml" ) );
     }
 
+    /**
+     * Initializes the settings scene with the default values.
+     */
     @FXML
     public void initialize()
     {
-        this.playerName.setText(DefaultGameConfiguration.PLAYER_NAME );
+        this.playerName.setText( DefaultGameConfiguration.PLAYER_NAME );
         this.settingsMenu.setVisible( true );
         CustomGameChecker.checkForCustomSettings( this.generateCustomGameMap() );
-
     }
 
+    /**
+     * Generates a map of the custom game settings.
+     * @return A map of the custom game settings.
+     */
     protected Map<String, Object > generateCustomGameMap()
     {
         Map<String, Object> customGameMap = new HashMap<>();
@@ -67,11 +88,4 @@ public class SettingsController {
 
         return customGameMap;
     }
-
-    @FXML
-    protected void quitProgram()
-    {
-        System.exit( 0 );
-    }
-
 }

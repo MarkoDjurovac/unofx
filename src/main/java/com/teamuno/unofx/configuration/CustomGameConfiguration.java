@@ -1,5 +1,9 @@
 package com.teamuno.unofx.configuration;
 
+/**
+ * Represents the default configuration for a game.
+ * @author Marc Göring
+ */
 public class CustomGameConfiguration
 {
     public static String PLAYER_NAME = "Olaf";

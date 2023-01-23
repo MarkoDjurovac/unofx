@@ -8,6 +8,10 @@ import com.teamuno.unofx.configuration.DefaultGameConfiguration;
 import com.teamuno.unofx.utilities.CustomGameChecker;
 import com.teamuno.unofx.utilities.GameLogic;
 
+/**
+ * GameState class is responsible for storing the current state of the game
+ * @author Armin Saric
+ */
 public class GameState
 {
     Deck deck;

@@ -2,8 +2,12 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+
+<!--
+    Represents the settings menu view.
+    @author Ahmet Emin Emre
+-->
 
 <VBox style="-fx-background-image: url('/img/settings.png'); -fx-background-size: cover" alignment="CENTER" prefHeight="600" prefWidth="800" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamuno.unofx.controller.SettingsController">

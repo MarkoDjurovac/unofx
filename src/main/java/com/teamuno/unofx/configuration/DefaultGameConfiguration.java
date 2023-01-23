@@ -1,5 +1,9 @@
 package com.teamuno.unofx.configuration;
 
+/**
+ * Holds the mutable values for a custom game configuration.
+ * @author Marc Göring
+ */
 public class DefaultGameConfiguration
 {
     public static final String PLAYER_NAME = "Olaf";

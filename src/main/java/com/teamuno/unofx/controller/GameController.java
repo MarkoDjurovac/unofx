@@ -17,6 +17,11 @@ import com.teamuno.unofx.model.*;
 import com.teamuno.unofx.utilities.GameLogic;
 import com.teamuno.unofx.utilities.SceneManager;
 
+/**
+ * Controller for the game scene.
+ * It handles the graphics and the logic of the game which is separated in the GameLogic class.
+ * @author Marko Djurovac
+ */
 public class GameController
 {
     GameState game;
@@ -36,6 +41,9 @@ public class GameController
     @FXML
     ScrollPane playerScrollPane;
 
+    /**
+     * Initializes the game.
+     */
     public void initialize( )
     {
         botScrollPane.vbarPolicyProperty().set( ScrollPane.ScrollBarPolicy.NEVER );
@@ -54,12 +62,19 @@ public class GameController
         this.drawDiscardPile();
     }
 
+    /**
+     * Quits the game and returns to the main menu.
+     * @param event The event that triggered the method.
+     */
     @FXML
     protected void quitGame( ActionEvent event ) throws IOException
     {
         SceneManager.changeScene( event, getClass().getResource( "/view/main-menu.fxml" ) );
     }
 
+    /**
+     * Draws a card from the deck and adds it to the player's hand.
+     */
     @FXML
     protected void drawCardUi()
     {
@@ -70,6 +85,10 @@ public class GameController
         this.endTurn( this.game );
     }
 
+    /**
+     * Deals the cards to the players
+     * @param player The player to deal the cards to.
+     */
     protected void dealCardsUi( Player player )
     {
         for( Card card : player.getHand() )
@@ -85,6 +104,9 @@ public class GameController
         }
     }
 
+    /**
+     * Draws the image on the discard pile.
+     */
     protected void drawDiscardPile()
     {
         this.discarded_pile.setFitHeight( 113.0 );
@@ -92,14 +114,21 @@ public class GameController
         discarded_pile.setImage( new Image( game.getDeck().getTopCard().getImageUrl() ) );
     }
 
+    /**
+     * Renders the back image for the bots hand.
+     */
     protected void renderImage()
     {
-        ImageView imageView = new ImageView( "/img/cards/back.gif" );
+        ImageView imageView = new ImageView( getClass().getResource( "/img/cards/back.gif" ).toString() );
         imageView.setFitHeight( 113.0 );
         imageView.setFitWidth( 79.0 );
         botHand.getChildren().add( imageView );
     }
 
+    /**
+     * Renders the image of the card to the player's hand.
+     * @param card The card to render.
+     */
     protected void renderImage( Card card )
     {
         ImageView imageView = new ImageView( card.getImageUrl() );
@@ -109,6 +138,11 @@ public class GameController
         this.setMouseClickEvent( imageView, card );
     }
 
+    /**
+     * Sets the mouse click event for the human player cards.
+     * @param imageView The image view of the card.
+     * @param card The card to set the event for.
+     */
     protected void setMouseClickEvent( ImageView imageView, Card card )
     {
         imageView.setOnMouseClicked( event ->
@@ -148,12 +182,21 @@ public class GameController
         });
     }
 
+    /**
+     * Plays the card on the discard pile.
+     * @param imageView The image view of the card.
+     */
     protected void playCardUi( ImageView imageView )
     {
         this.playerHand.getChildren().remove( imageView );
         this.discarded_pile.setImage( imageView.getImage() );
     }
 
+    /**
+     * Method for handling the bots turn.
+     *
+     * @param game The current game.
+     */
     protected void botTurn( GameState game )
     {
         if( game.getCurrentPlayer().isBot() )
@@ -191,12 +234,20 @@ public class GameController
         }
     }
 
+    /**
+     * Updates the bots hand after a card is played.
+     * @param card the card to update the hand with.
+     */
     protected void botPlayCardUi( Card card )
     {
         this.botHand.getChildren().remove( 0 );
         this.discarded_pile.setImage( new Image( card.getImageUrl() ) );
     }
 
+    /**
+     * Method for ending the current player's turn and starting the next player's turn.
+     * @param game The current game.
+     */
     public void endTurn( GameState game )
     {
         int index = game.getPlayerList().indexOf( game.getCurrentPlayer() );
@@ -210,6 +261,12 @@ public class GameController
         }
     }
 
+    /**
+     * Method for handling the special cards.
+     * If the card is a draw two or wild draw four, the players hand is updated accordingly.
+     * If the card is a wild or wild draw four, the color picker alert is shown.
+     * @param card The card that has been played
+     */
     protected void specialCardUi( Card card )
     {
         switch( card.getType() )
@@ -229,6 +286,10 @@ public class GameController
         }
     }
 
+    /**
+     * Method for updating the hand of the player.
+     * @param player The player to update the hand for.
+     */
     protected void updateHand( Player player )
     {
         if( player.isBot() )
@@ -243,6 +304,9 @@ public class GameController
         this.dealCardsUi( player );
     }
 
+    /**
+     * Method for handling the color choosing.
+     */
     protected void choseColor()
     {
         if( this.game.getCurrentPlayer().isBot() )
@@ -257,6 +321,9 @@ public class GameController
         }
     }
 
+    /**
+     * Method for ending the game and returning to the main menu.
+     */
     protected void endGame()
     {
         try
@@ -269,31 +336,42 @@ public class GameController
         }
     }
 
+    /**
+     * Method for displaying an alert if the card is not allowed to be played.
+     */
     protected void showInvalidMoveAlert()
     {
         Alert alert = new Alert( Alert.AlertType.ERROR );
         Stage stage = ( Stage ) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add( new Image( "/img/icon_512.png" ) );
+        stage.getIcons().add( new Image( getClass().getResource( "/img/icon_512.png" ).toString() ) );
         alert.setTitle( "UnoFX" );
         alert.setHeaderText( "This card cannot be played! Please select another card." );
         alert.showAndWait();
     }
 
+    /**
+     * Method for displaying an alert if one player has uno.
+     * @param game The current game.
+     */
     public void showUnoAlert( GameState game )
     {
         Alert alert = new Alert( Alert.AlertType.INFORMATION );
         Stage stage = ( Stage ) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add( new Image( "/img/icon_512.png" ) );
+        stage.getIcons().add( new Image( getClass().getResource( "/img/icon_512.png" ).toString() ) );
         alert.setTitle( "UnoFX" );
         alert.setHeaderText( game.getCurrentPlayer().getName() + " has UNO!" );
         alert.showAndWait();
     }
 
+    /**
+     * Method for displaying an alert one player has won the game.
+     * @param game The current game.
+     */
     public void showWinnerAlert( GameState game )
     {
         Alert alert = new Alert( Alert.AlertType.INFORMATION );
         Stage stage = ( Stage ) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add( new Image( "/img/icon_512.png" ) );
+        stage.getIcons().add( new Image( getClass().getResource( "/img/icon_512.png" ).toString() ) );
         alert.setTitle( "UnoFX" );
         alert.setHeaderText( game.getCurrentPlayer().getName() + " has won!" );
         alert.showAndWait();
@@ -301,11 +379,14 @@ public class GameController
         this.endGame();
     }
 
+    /**
+     * Method for displaying an alert if the player has played a wild card.
+     */
     protected void showWildCardAlert()
     {
         Alert alert = new Alert( Alert.AlertType.CONFIRMATION );
         Stage stage = ( Stage ) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add( new Image( "/img/icon_512.png" ) );
+        stage.getIcons().add( new Image( getClass().getResource( "/img/icon_512.png" ).toString() ) );
         alert.setTitle( "Color Picker" );
         alert.setHeaderText( "Please choose a color!" );
 
@@ -338,11 +419,15 @@ public class GameController
         this.game.getDeck().getTopCard().setType( CardConfiguration.TYPES.NUMBER );
     }
 
+    /**
+     * Method for displaying an alert if the bot has played a wild card.
+     * @param player The player that has played the card ( bot )
+     */
     protected void showWildCardBotAlert( Player player )
     {
         Alert alert = new Alert( Alert.AlertType.INFORMATION );
         Stage stage = ( Stage ) alert.getDialogPane().getScene().getWindow();
-        stage.getIcons().add( new Image( "/img/icon_512.png" ) );
+        stage.getIcons().add( new Image( getClass().getResource( "/img/icon_512.png" ).toString() ) );
         alert.setTitle( "Wild Card" );
         alert.setHeaderText( player.getName() + " has chosen " + this.game.getDeck().getTopCard().getColor().toString()  + " as the new color." );
         alert.showAndWait();

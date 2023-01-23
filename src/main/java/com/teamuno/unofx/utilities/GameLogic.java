@@ -1,15 +1,22 @@
 package com.teamuno.unofx.utilities;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import com.teamuno.unofx.configuration.CardConfiguration;
 import com.teamuno.unofx.configuration.CustomGameConfiguration;
 import com.teamuno.unofx.configuration.DefaultGameConfiguration;
 import com.teamuno.unofx.model.*;
 
+/**
+ * GameLogic class is responsible for handling the game logic.
+ * @author Armin Saric
+ */
 public class GameLogic
 {
+    /**
+     * Method for dealing cards to the players.
+     * @param playerList The list of players.
+     * @param deck The deck to draw from.
+     */
     public static void dealCards( List<Player> playerList, Deck deck )
     {
         int numberOfCards = CustomGameChecker.isCustomGame() ? CustomGameConfiguration.CARDS_PER_PLAYER : DefaultGameConfiguration.CARDS_PER_PLAYER;
@@ -23,6 +30,12 @@ public class GameLogic
         }
     }
 
+    /**
+     * Method for checking if the player can play a card.
+     * @param topCard the top card on the discard pile.
+     * @param card The card to check.
+     * @return True if the player can play the card, false otherwise.
+     */
     public static boolean isValidMove( Card topCard, Card card )
     {
         if( card.getColor() == topCard.getColor() )
@@ -48,18 +61,18 @@ public class GameLogic
         return false;
     }
 
+    /**
+     * Method for checking if card is a special card.
+     * @param game The game the player is playing in.
+     * @param card The card to check.
+     * @return True if it is a special card, false otherwise.
+     */
     public static boolean checkForSpecialCard( GameState game, Card card )
     {
         switch( card.getType() )
         {
             case WILD_DRAW_FOUR -> wildDrawFour( game );
             case DRAW_TWO -> drawTwo( game );
-            case SKIP -> {
-                // skip( game );
-            }
-            case REVERSE -> {
-                // reverse( game );
-            }
             default -> {
             }
         }
@@ -67,6 +80,11 @@ public class GameLogic
         return false;
     }
 
+    /**
+     * Method for handling the wild draw four card.
+     * Makes the next player draw four cards.
+     * @param game The game the player is playing in.
+     */
     public static void wildDrawFour( GameState game )
     {
         game.getNextPlayer().getHand().add( game.getDeck().draw() );
@@ -75,32 +93,22 @@ public class GameLogic
         game.getNextPlayer().getHand().add( game.getDeck().draw() );
     }
 
+    /**
+     * Method for handling the draw two card.
+     * Makes the next player draw two cards.
+     * @param game The game the player is playing in.
+     */
     public static void drawTwo( GameState game )
     {
         game.getNextPlayer().getHand().add( game.getDeck().draw() );
         game.getNextPlayer().getHand().add( game.getDeck().draw() );
     }
 
-    public static void skip( GameState game )
-    {
-        int index = game.getPlayerList().indexOf( game.getCurrentPlayer() );
-        int nextPlayerIndex = ( index + game.getPlayerList().size() ) % game.getPlayerList().size();
-
-        game.setCurrentPlayer( game.getPlayerList().get( nextPlayerIndex ) );
-    }
-
-    public static void reverse( GameState game )
-    {
-        List<Player> reversedPlayerList = new ArrayList<>();
-
-        for( int i = game.getPlayerList().size() - 1; i >= 0; i-- )
-        {
-            reversedPlayerList.add( game.getPlayerList().get( i ) );
-        }
-
-        game.setPlayerList( reversedPlayerList );
-    }
-
+    /**
+     * Method for checking if the player has uno.
+     * @param player The player to check.
+     * @return True if the player has uno, false otherwise.
+     */
     public static boolean checkForUno( Player player )
     {
         if( player.getHand().size() == 1 )
@@ -111,6 +119,11 @@ public class GameLogic
         return false;
     }
 
+    /**
+     * Method for checking if the player has won.
+     * @param player The player to check.
+     * @return True if the player has won, false otherwise.
+     */
     public static boolean checkForWin( Player player )
     {
         if( player.getHand().size() == 0 )
