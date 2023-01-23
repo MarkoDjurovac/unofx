@@ -1,7 +1,7 @@
 package com.teamuno.unofx.configuration;
 
 /**
- * Holds the mutable values for a custom game configuration.
+ * Represents the default configuration for a game.
  * @author Marc Göring
  */
 public class DefaultGameConfiguration
