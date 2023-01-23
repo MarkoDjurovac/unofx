@@ -20,6 +20,9 @@ public class GameState
 
     private Player currentPlayer;
 
+    /**
+     * Constructor for the GameState class.
+     */
     public GameState()
     {
         this.playerList = new ArrayList<>();
@@ -27,6 +30,10 @@ public class GameState
         this.startGame( CustomGameChecker.isCustomGame() ? new Human( CustomGameConfiguration.PLAYER_NAME ) : new Human( DefaultGameConfiguration.PLAYER_NAME ) );
     }
 
+    /**
+     * Starts a new game.
+     * @param player The player to add to the game.
+     */
     public void startGame( Player player )
     {
         this.deck = new Deck();
@@ -37,21 +44,28 @@ public class GameState
         this.deck.discard( this.deck.draw() );
     }
 
+    /**
+     * Getter for the player list.
+     * @return playerList The list of players.
+     */
     public List<Player> getPlayerList()
     {
         return this.playerList;
     }
 
-    public void setPlayerList( List<Player> value )
-    {
-        this.playerList = value;
-    }
-
+    /**
+     * Getter for the current player.
+     * @return currentPlayer The current player.
+     */
     public Player getCurrentPlayer()
     {
         return this.currentPlayer;
     }
 
+    /**
+     * Getter for the next player
+     * @return The next player.
+     */
     public Player getNextPlayer()
     {
         int index = this.playerList.indexOf( this.currentPlayer );
@@ -60,11 +74,18 @@ public class GameState
         return this.playerList.get( nextPlayerIndex );
     }
 
+    /**
+     * Setter for the current player.
+     */
     public void setCurrentPlayer( Player player )
     {
         this.currentPlayer = player;
     }
 
+    /**
+     * Getter for the deck.
+     * @return deck The deck.
+     */
     public Deck getDeck()
     {
         return this.deck;

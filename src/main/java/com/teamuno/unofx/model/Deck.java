@@ -50,13 +50,11 @@ public class Deck
     {
         if( this.deck.size() == 0 )
         {
-            Card topCard = this.discardPile.get( 0 );
-            this.deck = this.discardPile;
-            this.discardPile = new ArrayList<>();
-            this.discardPile.add( topCard );
+            Card topCard = this.getTopCard();
+            this.deck.addAll( this.discardPile );
+            this.discardPile.clear();
             this.shuffle();
-
-            return this.deck.remove( 0 );
+            this.discardPile.add( topCard );
         }
 
         return this.deck.remove( 0 );

@@ -17,7 +17,6 @@ public class DeckFactory
     /**
      * Creates a deck of cards depending on the game configuration
      * @param deck The deck to be filled with cards
-     * @return List of cards ( deck )
      */
     public static void generateDeck( List<Card> deck )
     {
@@ -38,24 +37,24 @@ public class DeckFactory
 
         for(int i = 0; i < specialCardsPerSet; i++ )
         {
-            deck.add( new Card( CardConfiguration.COLORS.RED, CardConfiguration.TYPES.DRAW_TWO, 12 ) );
-            deck.add( new Card( CardConfiguration.COLORS.YELLOW, CardConfiguration.TYPES.DRAW_TWO, 12 ) );
-            deck.add( new Card( CardConfiguration.COLORS.GREEN, CardConfiguration.TYPES.DRAW_TWO, 12 ) );
-            deck.add( new Card( CardConfiguration.COLORS.BLUE, CardConfiguration.TYPES.DRAW_TWO, 12 ) );
+            deck.add( new Card( CardConfiguration.COLORS.RED, CardConfiguration.TYPES.DRAW_TWO, 10 ) );
+            deck.add( new Card( CardConfiguration.COLORS.YELLOW, CardConfiguration.TYPES.DRAW_TWO, 10 ) );
+            deck.add( new Card( CardConfiguration.COLORS.GREEN, CardConfiguration.TYPES.DRAW_TWO, 10 ) );
+            deck.add( new Card( CardConfiguration.COLORS.BLUE, CardConfiguration.TYPES.DRAW_TWO, 10 ) );
         }
 
         int wildCardsPerSet = CustomGameChecker.isCustomGame() ? CustomGameConfiguration.WILD_CARDS_PER_SET : DefaultGameConfiguration.WILD_CARDS_PER_SET;
 
         for(int i = 0; i < wildCardsPerSet; i++ )
         {
-            deck.add( new Card( CardConfiguration.COLORS.BLACK, CardConfiguration.TYPES.WILD, 13 ) );
+            deck.add( new Card( CardConfiguration.COLORS.BLACK, CardConfiguration.TYPES.WILD, 11 ) );
         }
 
         int wildDrawFourCardsPerSet = CustomGameChecker.isCustomGame() ? CustomGameConfiguration.WILD_DRAW_FOUR_CARDS_PER_SET : DefaultGameConfiguration.WILD_DRAW_FOUR_CARDS_PER_SET;
 
         for( int i = 0; i < wildDrawFourCardsPerSet; i++ )
         {
-            deck.add( new Card( CardConfiguration.COLORS.BLACK, CardConfiguration.TYPES.WILD_DRAW_FOUR, 14 ) );
+            deck.add( new Card( CardConfiguration.COLORS.BLACK, CardConfiguration.TYPES.WILD_DRAW_FOUR, 12 ) );
         }
     }
 }

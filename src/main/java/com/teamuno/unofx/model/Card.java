@@ -2,8 +2,6 @@ package com.teamuno.unofx.model;
 
 import com.teamuno.unofx.configuration.CardConfiguration;
 
-import java.io.IOException;
-
 /**
  * Represents a uno card.
  * @author Marc Göring

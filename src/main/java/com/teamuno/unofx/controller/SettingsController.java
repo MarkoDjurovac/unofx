@@ -55,7 +55,7 @@ public class SettingsController {
      * @throws IOException when the scene could not be changed.
      */
     @FXML
-    protected void backToMenu(ActionEvent event) throws IOException
+    protected void backToMenu( ActionEvent event ) throws IOException
     {
         SceneManager.changeScene( event, getClass().getResource( "/view/main-menu.fxml" ) );
     }

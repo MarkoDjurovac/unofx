@@ -1,5 +1,6 @@
 package com.teamuno.unofx.utilities;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.teamuno.unofx.configuration.CardConfiguration;
 import com.teamuno.unofx.configuration.CustomGameConfiguration;
@@ -73,6 +74,10 @@ public class GameLogic
         {
             case WILD_DRAW_FOUR -> wildDrawFour( game );
             case DRAW_TWO -> drawTwo( game );
+            /*
+             * case SKIP -> skip( game );
+             * case REVERSE -> reverse( game );
+             */
             default -> {
             }
         }
@@ -92,6 +97,30 @@ public class GameLogic
         game.getNextPlayer().getHand().add( game.getDeck().draw() );
         game.getNextPlayer().getHand().add( game.getDeck().draw() );
     }
+
+    /*
+    *
+    *  public static void skip( GameState game )
+    *  {
+    *       game.setCurrentPlayer( game.getNextPlayer() );
+    *   }
+    *
+    *  public static void reverse( GameState game )
+    *  {
+    *     List<Player> reversedPlayerList = new ArrayList<>();
+    *
+    *     for( int i = game.getPlayerList().size() - 1; i >= 0; i-- )
+    *     {
+    *       reversedPlayerList.add( game.getPlayerList().get( i ) );
+    *     }
+    *
+    *     int currentIndex = game.getPlayerList().indexOf( game.getCurrentPlayer() );
+    *     game.setCurrentPlayer(reversedPlayerList.get( currentIndex ) );
+    *
+    *     game.setPlayerList( reversedPlayerList );
+    *  }
+    *
+    */
 
     /**
      * Method for handling the draw two card.

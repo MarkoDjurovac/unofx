@@ -8,5 +8,5 @@ public class CardConfiguration
 {
     public enum COLORS { RED, YELLOW, GREEN, BLUE, BLACK }
 
-    public enum TYPES { NUMBER, DRAW_TWO, WILD, WILD_DRAW_FOUR }
+    public enum TYPES { NUMBER, DRAW_TWO, /* SKIP, REVERSE, */ WILD, WILD_DRAW_FOUR }
 }
